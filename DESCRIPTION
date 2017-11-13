@@ -5,6 +5,10 @@ Authors@R: person("Zebulun", "Arendsee", email = "zbwrnz@gmail.com", role = c("a
 Description:
     Retrieve data from the 1000 plant transcriptome project (1KP).
 Depends: R (>= 3.4.2)
+Imports:
+    rvest,
+    xml2
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.0.1
