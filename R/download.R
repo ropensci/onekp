@@ -40,6 +40,30 @@ NULL
   }
 }
 
+.unwrap_sequence <- function(path){
+  # create a temporary directory that will hold the extracted files
+  dir <- tempdir()
+  if(!dir.exists(dir))
+    dir.create(dir)
+  # get names of all files
+  files <- file.path(dir, untar(path, compressed='bzip2', list=TRUE))
+  # extract files 
+  untar(path, compressed='bzip2', exdir=dir)
+  # name and create the destination file
+  final <- sub('.tar.bz2', '', path)
+  file.create(final)
+  # FIXME: 1KP stores the proteins in thousands of individual files.  I simple
+  # cat them all into one file.  However, the names are NOT unique. The
+  # filenames have the format '<1KP_code>.<id>.FAA'. The id is probably
+  # important and I should write it into the headers before joining them. But
+  # for now, I won't.
+  file.append(final, files)
+  # cleanup
+  file.remove(path)
+  unlink(dir, recursive=TRUE)
+  final
+}
+
 #' @rdname download
 #' @export
 download_assembly <- function(x){
@@ -67,33 +91,10 @@ download_geneID_to_orthoID_map <- function(x){
 #' @rdname download
 #' @export
 download_peptides <- function(x){
-  unwrap <- function(path){
-    # create a temporary directory that will hold the extracted files
-    dir <- tempdir()
-    if(!dir.exists(dir))
-      dir.create(dir)
-    # get names of all files
-    files <- file.path(dir, untar(path, compressed='bzip2', list=TRUE))
-    # extract files 
-    untar(path, compressed='bzip2', exdir=dir)
-    # name and create the destination file
-    final <- sub('.tar.bz2', '', path)
-    file.create(final)
-    # FIXME: 1KP stores the proteins in thousands of individual files.  I simple
-    # cat them all into one file.  However, the names are NOT unique. The
-    # filenames have the format '<1KP_code>.<id>.FAA'. The id is probably
-    # important and I should write it into the headers before joining them. But
-    # for now, I won't.
-    file.append(final, files)
-    # cleanup
-    file.remove(path)
-    unlink(dir, recursive=TRUE)
-    final
-  }
   .download(
     x,
     'Peptides',
-    unwrap  = unwrap,
+    unwrap  = .unwrap_sequence,
     uncache = .cache_by_extension(old_ext='.faa.tar.bz2', new_ext='.faa')
   )
 }
@@ -101,7 +102,12 @@ download_peptides <- function(x){
 #' @rdname download
 #' @export
 download_nucleotides <- function(x){
-  stop("NOT IMPLEMENTED")
+  .download(
+    x,
+    'Nucleotides',
+    unwrap  = .unwrap_sequence,
+    uncache = .cache_by_extension(old_ext='.fna.tar.bz2', new_ext='.fna')
+  )
 }
 
 #' @rdname download
