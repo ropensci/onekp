@@ -7,7 +7,10 @@ Description:
 Depends: R (>= 3.4.2)
 Imports:
     rvest,
-    xml2
+    xml2,
+    taxizedb (>= 0.1.5.9110)
+Remotes:
+    ropensci/taxizedb
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
