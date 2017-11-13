@@ -35,5 +35,8 @@ download_filtered(x)
 character vector of paths to the files that were downloaded
 }
 \description{
-Download a dataset
+These functions will return all files in the OneKP object of the given type
+(e.g. protein FASTA files for get_peptides). If you do not want to retrieve
+all these files (there are over a thousand), then you should filter the
+OneKP object first, using the \code{filter_by_*} functions.
 }

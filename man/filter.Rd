@@ -22,3 +22,9 @@ OneKP object
 \description{
 Filter a OneKP object
 }
+\examples{
+onekp <- retrieve_oneKP()
+onekp
+x <- filter_by_code(onekp, c('URDJ', 'ROAP'))
+x
+}

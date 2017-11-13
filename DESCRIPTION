@@ -7,6 +7,8 @@ Description:
 Depends: R (>= 3.4.2)
 Imports:
     rvest,
+    curl,
+    readr,
     xml2,
     taxizedb (>= 0.1.5.9110)
 Remotes:

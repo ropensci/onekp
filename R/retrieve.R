@@ -15,7 +15,8 @@ retrieve_oneKP <- function(){
     {
       data.frame(
         file = unlist(.),
-        url  = vapply(FUN.VALUE="", ., function(link){attributes(link)$href})
+        url  = vapply(FUN.VALUE="", ., function(link){attributes(link)$href}),
+        stringsAsFactors=FALSE
       )
     }
   onekp
