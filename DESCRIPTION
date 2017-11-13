@@ -1,0 +1,10 @@
+Package: oneKP
+Title: Retrieve Data from the 1000 Plant Transcriptome Project (1KP)
+Version: 0.0.0.9000
+Authors@R: person("Zebulun", "Arendsee", email = "zbwrnz@gmail.com", role = c("aut", "cre"))
+Description:
+    Retrieve data from the 1000 plant transcriptome project (1KP).
+Depends: R (>= 3.4.2)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
