@@ -3,13 +3,13 @@
 \name{filter}
 \alias{filter}
 \alias{filter_by_code}
-\alias{filter_by_node}
+\alias{filter_by_ncbi_taxid}
 \alias{filter_by_species}
 \title{Filter a OneKP object}
 \usage{
 filter_by_code(x, code)
 
-filter_by_node(x, node)
+filter_by_ncbi_taxid(x, node)
 
 filter_by_species(x, species)
 }

@@ -4,7 +4,13 @@
 \alias{retrieve_oneKP}
 \title{Retrieve data from 1KP}
 \usage{
-retrieve_oneKP()
+retrieve_oneKP(add_taxids = FALSE)
+}
+\arguments{
+\item{add_taxids}{If TRUE, add NCBI taxon ids for each species. This
+requires downloading the NCBI taxonomy database, which will require a few
+extra minutes the first time you run the function. This step is necessary
+only if you wish to filter by NCBI taxon ids.}
 }
 \value{
 OneKP object

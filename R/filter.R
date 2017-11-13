@@ -12,14 +12,14 @@ NULL
 
 #' @rdname filter
 #' @export
-filter_by_code    <- function(x, code) {
+filter_by_code <- function(x, code) {
   x@table <- x@table[x@table[['1kP_Code']] %in% code, ]
   x
 }
 
 #' @rdname filter
 #' @export
-filter_by_node    <- function(x, node) {
+filter_by_ncbi_taxid <- function(x, node) {
   stop("NOT IMPLEMENTED")
 }
 
