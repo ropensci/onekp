@@ -15,12 +15,18 @@ filter_by_ancestor_name(x, names)
 
 filter_by_ancestor_id(x, ids)
 
-filter_by_species(x, species)
+filter_by_species(x, names)
 
-filter_by_taxid(x, tax_id)
+filter_by_taxid(x, ids)
 }
 \arguments{
 \item{x}{OneKP object}
+
+\item{code}{character vector of 1KP IDs (e.g. URDJ)}
+
+\item{names}{vector of scientific names (}
+
+\item{ids}{vector of NCBI taxonomy IDs}
 }
 \value{
 OneKP object

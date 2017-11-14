@@ -1,6 +1,9 @@
 #' Filter a OneKP object
 #'
 #' @param x OneKP object
+#' @param code character vector of 1KP IDs (e.g. URDJ)
+#' @param ids vector of NCBI taxonomy IDs
+#' @param names vector of scientific names (
 #' @return OneKP object
 #' @name filter
 #' @examples
@@ -51,24 +54,24 @@ filter_by_ancestor_id <- function(x, ids) {
   cmd <- "SELECT tax_id, hierarchy_string FROM hierarchy WHERE tax_id IN (%s)"
   cmd <- sprintf(cmd, paste0("'", x@table$tax_id, "'", collapse=", "))
   taxa <- taxizedb::sql_collect(db, cmd) %>%
-    transform(hierarchy_string=strsplit(hierarchy_string, "-")) %>%
-    tidyr::unnest(hierarchy_string) %>%
-    dplyr::filter(hierarchy_string %in% ids) %>%
+    dplyr::mutate(id = strsplit(.data$hierarchy_string, "-")) %>%
+    tidyr::unnest(.data$id) %>%
+    dplyr::filter(.data$id %in% ids) %>%
     { unique(.$tax_id) }
   filter_by_taxid(x, taxa)
 }
 
 #' @rdname filter
 #' @export
-filter_by_species <- function(x, species) {
-  species <- gsub('_', ' ', species)
-  x@table <- x@table[x@table[['Species']] %in% species, ]
+filter_by_species <- function(x, names) {
+  names <- gsub('_', ' ', names)
+  x@table <- x@table[x@table[['Species']] %in% names, ]
   x
 }
 
 #' @rdname filter
 #' @export
-filter_by_taxid <- function(x, tax_id) {
-  x@table <- x@table[x@table[['tax_id']] %in% tax_id, ]
+filter_by_taxid <- function(x, ids) {
+  x@table <- x@table[x@table[['tax_id']] %in% ids, ]
   x
 }

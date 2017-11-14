@@ -1,4 +1,7 @@
+#' @importFrom rlang .data
 #' @importFrom magrittr "%>%"
+#' @importFrom methods new
+#' @importFrom utils head untar
 utils::globalVariables(c("%>%", "."))
 NULL
 

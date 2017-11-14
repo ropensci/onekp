@@ -7,6 +7,7 @@
 #' @param filter If TRUE, filter out entries that are associated with a single
 #' species (for example crosses or datasets pooled across a genus). If set to
 #' TRUE, then add_taxids will also be set to TRUE.
+#' @export
 #' @return OneKP object
 retrieve_oneKP <- function(add_taxids=TRUE, filter=TRUE){
   oneKP_url <- 'http://www.onekp.com/public_data.html'
