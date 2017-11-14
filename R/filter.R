@@ -36,29 +36,13 @@ filter_by_code <- function(x, code) {
 #' @rdname filter
 #' @export
 filter_by_ancestor_name <- function(x, names) {
-  dbfile <- taxizedb::db_download_ncbi(verbose=FALSE)
-  db <- taxizedb::src_ncbi(dbfile)
-  # prepare SQL query
-  cmd <- "SELECT tax_id FROM names WHERE name_txt IN (%s)"
-  cmd <- sprintf(cmd, paste0("'", names, "'", collapse=", "))
-  tax_ids <- taxizedb::sql_collect(db, cmd)$tax_id
-  filter_by_ancestor_taxid(x, tax_ids)
+  filter_by_ancestor_taxid(x, sciname2taxid(names))
 }
 
 #' @rdname filter
 #' @export
 filter_by_ancestor_taxid <- function(x, ids) {
-  dbfile <- taxizedb::db_download_ncbi(verbose=FALSE)
-  db <- taxizedb::src_ncbi(dbfile)
-  # prepare SQL query
-  cmd <- "SELECT tax_id, hierarchy_string FROM hierarchy WHERE tax_id IN (%s)"
-  cmd <- sprintf(cmd, paste0("'", x@table$tax_id, "'", collapse=", "))
-  taxa <- taxizedb::sql_collect(db, cmd) %>%
-    dplyr::mutate(id = strsplit(.data$hierarchy_string, "-")) %>%
-    tidyr::unnest(.data$id) %>%
-    dplyr::filter(.data$id %in% ids) %>%
-    { unique(.$tax_id) }
-  filter_by_taxid(x, taxa)
+  filter_by_taxid(x, downstream(x, ids))
 }
 
 #' @rdname filter
