@@ -16,7 +16,15 @@ retrieve_oneKP <- function(add_taxids=TRUE, filter=TRUE){
     xml2::read_html() %>%
     rvest::html_nodes('table') %>%
     rvest::html_table(header=TRUE) %>%
-    { .[[1]] }
+    { .[[1]] } %>%
+    dplyr::select(
+      species = 'Species',
+      code = '1kP_Code',
+      family = 'Family',
+      tissue = 'Tissue Type',
+      peptides = 'Peptides',
+      nucleotides = 'Nucleotides'
+    )
   onekp@links <- oneKP_url %>%
     xml2::read_html() %>%
     rvest::html_nodes('td a') %>%
@@ -29,8 +37,8 @@ retrieve_oneKP <- function(add_taxids=TRUE, filter=TRUE){
       )
     }
   if(add_taxids || filter){
-    taxnames <- get_taxids(onekp@table$Species, warn=!filter)
-    onekp@table <- merge(onekp@table, taxnames, by.x='Species', by.y='name_txt', all.x=TRUE) 
+    taxnames <- get_taxids(onekp@table$species, warn=!filter)
+    onekp@table <- merge(onekp@table, taxnames, by.x='species', by.y='name_txt', all.x=TRUE) 
     if(filter){
       onekp@table <- onekp@table[!is.na(onekp@table$tax_id), ]
     }
@@ -44,7 +52,7 @@ get_taxids <- function(x, warn=TRUE){
   # only consider unique IDs
   x <- unique(x)
   # open NCBI taxonomy database
-  dbfile <- taxizedb::db_download_ncbi()
+  dbfile <- taxizedb::db_download_ncbi(verbose=FALSE)
   db <- taxizedb::src_ncbi(dbfile)
   # prepare SQL query
   cmd <- "SELECT name_txt, tax_id FROM names WHERE name_txt IN (%s)"

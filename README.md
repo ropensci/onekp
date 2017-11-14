@@ -11,8 +11,8 @@ Retrieve the protein and gene transcript FASTA files for two 1KP transcriptomes:
 ``` R
 onekp <- retrieve_oneKP()
 seqs <- filter_by_code(onekp, c('URDJ', 'ROAP'))
-retrieve_proteins(seqs)
-retrieve_nucleotides(seqs)
+download_proteins(seqs)
+download_nucleotides(seqs)
 ```
 
 This will create the following directory:

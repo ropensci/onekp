@@ -2,31 +2,13 @@
 % Please edit documentation in R/download.R
 \name{download}
 \alias{download}
-\alias{download_assembly}
-\alias{download_transrate_stats}
-\alias{download_index}
-\alias{download_geneID_to_orthoID_map}
 \alias{download_peptides}
 \alias{download_nucleotides}
-\alias{download_filtered_gene_sets}
-\alias{download_filtered}
 \title{Download a dataset}
 \usage{
-download_assembly(x)
-
-download_transrate_stats(x)
-
-download_index(x)
-
-download_geneID_to_orthoID_map(x)
-
 download_peptides(x)
 
 download_nucleotides(x)
-
-download_filtered_gene_sets(x)
-
-download_filtered(x)
 }
 \arguments{
 \item{x}{OneKP object}

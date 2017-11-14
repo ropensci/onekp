@@ -66,30 +66,6 @@ NULL
 
 #' @rdname download
 #' @export
-download_assembly <- function(x){
-  stop("NOT IMPLEMENTED")
-}
-
-#' @rdname download
-#' @export
-download_transrate_stats <- function(x){
-  stop("NOT IMPLEMENTED")
-}
-
-#' @rdname download
-#' @export
-download_index <- function(x){
-  stop("NOT IMPLEMENTED")
-}
-
-#' @rdname download
-#' @export
-download_geneID_to_orthoID_map <- function(x){
-  stop("NOT IMPLEMENTED")
-}
-
-#' @rdname download
-#' @export
 download_peptides <- function(x){
   .download(
     x,
@@ -108,16 +84,4 @@ download_nucleotides <- function(x){
     unwrap  = .unwrap_sequence,
     uncache = .cache_by_extension(old_ext='.fna.tar.bz2', new_ext='.fna')
   )
-}
-
-#' @rdname download
-#' @export
-download_filtered_gene_sets <- function(x){
-  stop("NOT IMPLEMENTED")
-}
-
-#' @rdname download
-#' @export
-download_filtered <- function(x){
-  stop("NOT IMPLEMENTED")
 }

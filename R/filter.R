@@ -29,14 +29,14 @@ NULL
 #' @rdname filter
 #' @export
 filter_by_code <- function(x, code) {
-  x@table <- x@table[x@table[['1kP_Code']] %in% code, ]
+  x@table <- x@table[x@table[['code']] %in% code, ]
   x
 }
 
 #' @rdname filter
 #' @export
 filter_by_ancestor_name <- function(x, names) {
-  dbfile <- taxizedb::db_download_ncbi()
+  dbfile <- taxizedb::db_download_ncbi(verbose=FALSE)
   db <- taxizedb::src_ncbi(dbfile)
   # prepare SQL query
   cmd <- "SELECT tax_id FROM names WHERE name_txt IN (%s)"
@@ -48,7 +48,7 @@ filter_by_ancestor_name <- function(x, names) {
 #' @rdname filter
 #' @export
 filter_by_ancestor_id <- function(x, ids) {
-  dbfile <- taxizedb::db_download_ncbi()
+  dbfile <- taxizedb::db_download_ncbi(verbose=FALSE)
   db <- taxizedb::src_ncbi(dbfile)
   # prepare SQL query
   cmd <- "SELECT tax_id, hierarchy_string FROM hierarchy WHERE tax_id IN (%s)"
@@ -65,7 +65,7 @@ filter_by_ancestor_id <- function(x, ids) {
 #' @export
 filter_by_species <- function(x, names) {
   names <- gsub('_', ' ', names)
-  x@table <- x@table[x@table[['Species']] %in% names, ]
+  x@table <- x@table[x@table[['species']] %in% names, ]
   x
 }
 

@@ -8,7 +8,7 @@ print.OneKP <- function(x, ...){
   cat(sprintf(
     'Slot "table": metadata for %s transcriptomes from %s species\n',
     nrow(x@table),
-    length(unique(x@table$Species))
+    length(unique(x@table$species))
   ))
   cat('Slot "links": map of file names from "table" to URLs\n')
 }
