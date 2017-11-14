@@ -34,7 +34,7 @@ sciname2taxid <- function(names){
   taxizedb::sql_collect(db, cmd)$tax_id
 }
 
-downstream <- function(x, ancestors){
+downstream <- function(x, clades){
   dbfile <- taxizedb::db_download_ncbi(verbose=FALSE)
   db <- taxizedb::src_ncbi(dbfile)
   # prepare SQL query
@@ -43,6 +43,6 @@ downstream <- function(x, ancestors){
   taxizedb::sql_collect(db, cmd) %>%
     dplyr::mutate(id = strsplit(.data$hierarchy_string, "-")) %>%
     tidyr::unnest(.data$id) %>%
-    dplyr::filter(.data$id %in% ancestors) %>%
+    dplyr::filter(.data$id %in% clades) %>%
     { unique(.$tax_id) }
 }

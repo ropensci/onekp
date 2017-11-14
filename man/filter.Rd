@@ -3,30 +3,24 @@
 \name{filter}
 \alias{filter}
 \alias{filter_by_code}
-\alias{filter_by_ancestor_name}
-\alias{filter_by_ancestor_taxid}
+\alias{filter_by_clade}
 \alias{filter_by_species}
-\alias{filter_by_taxid}
 \title{Filter a OneKP object}
 \usage{
 filter_by_code(x, code)
 
-filter_by_ancestor_name(x, names)
+filter_by_clade(x, clade)
 
-filter_by_ancestor_taxid(x, ids)
-
-filter_by_species(x, names)
-
-filter_by_taxid(x, ids)
+filter_by_species(x, species)
 }
 \arguments{
 \item{x}{OneKP object}
 
 \item{code}{character vector of 1KP IDs (e.g. URDJ)}
 
-\item{names}{vector of scientific names (}
+\item{clade}{vector of clade-level NCBI taxonomy IDs or scientific names}
 
-\item{ids}{vector of NCBI taxonomy IDs}
+\item{species}{vector of species-level scientific names or NCBI taxonomy IDs}
 }
 \value{
 OneKP object
@@ -45,11 +39,11 @@ filter_by_code(onekp, c('URDJ', 'ROAP'))
 filter_by_species(onekp, 'Pinus radiata')
 
 # filter by species NCBI taxon ID
-filter_by_taxid(onekp, 3347)
+filter_by_species(onekp, 3347)
 
-# filter by ancestor name scientific name
-filter_by_ancestor_name(onekp, 'Brassicaceae')
+# filter by clade name scientific name
+filter_by_clade(onekp, 'Brassicaceae')
 
-# filter by ancestor NCBI taxon ID
-filter_by_ancestor_taxid(onekp, 3700)
+# filter by clade NCBI taxon ID
+filter_by_clade(onekp, 3700)
 }

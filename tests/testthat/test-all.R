@@ -14,13 +14,13 @@ test_that("Can download 1KP table of data", {
     c(13333, 13099)
   )
   expect_equal(filter_by_species(kp, 'Pinus radiata')@table$tax_id, 3347)
-  expect_equal(filter_by_taxid(kp, 3347)@table$species, 'Pinus radiata')
+  expect_equal(filter_by_species(kp, 3347)@table$species, 'Pinus radiata')
   expect_equal(
-    filter_by_ancestor_name(kp, 'Brassiceae')@table$species,
+    filter_by_clade(kp, 'Brassiceae')@table$species,
     c('Brassica nigra', 'Sinapis alba')
   )
   expect_equal(
-    filter_by_ancestor_taxid(kp, 981071)@table$species,
+    filter_by_clade(kp, 981071)@table$species,
     c('Brassica nigra', 'Sinapis alba')
   )
 })
