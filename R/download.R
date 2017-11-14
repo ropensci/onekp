@@ -52,7 +52,7 @@ NULL
   # name and create the destination file
   final <- sub('.tar.bz2', '', path)
   file.create(final)
-  # FIXME: 1KP stores the proteins in thousands of individual files.  I simple
+  # FIXME: 1KP stores the proteins in thousands of individual files. I simple
   # cat them all into one file.  However, the names are NOT unique. The
   # filenames have the format '<1KP_code>.<id>.FAA'. The id is probably
   # important and I should write it into the headers before joining them. But
