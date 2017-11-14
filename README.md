@@ -1,8 +1,6 @@
 # Access 1000 plants dataset
 
-For info on the 1000 plant proteome project see the project [home page](https://sites.google.com/a/ualberta.ca/onekp/)
-
-If you use this package, please cite the [1KP papers](https://sites.google.com/a/ualberta.ca/onekp/papers-to-cite).
+For info on this project see the 1KP [home page](https://sites.google.com/a/ualberta.ca/onekp/).
 
 ## Examples
 
@@ -51,3 +49,12 @@ seqs <- filter_by_ancestor_name(onekp, 'Brassicaceae')
 download_peptides(seqs)
 download_nucleotides(seqs)
 ```
+
+## Future Directions
+
+I currently access the data by scraping URLs from an HTML table on the 1KP
+website. It would be better to get the data from a more stable source. Luckily,
+the 1KP data is managed by iPlant/CyVerse. Refactoring `onekp` to directly
+access CyVerse would be a mostly internal change that should not affect the
+API. It would, however, add an iRODs dependency and break portability to
+Windows (good riddance).
