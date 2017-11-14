@@ -27,4 +27,27 @@ oneKP
      └── URDJ.faa
 ```
 
-Smarter filters are coming soon
+`oneKP` can also filter by species names, taxon ids, or ancestor.
+
+```R
+# filter by species name
+filter_by_species(onekp, 'Pinus radiata')
+
+# filter by species NCBI taxon ID
+filter_by_taxid(onekp, 3347)
+
+# filter by ancestor name scientific name (get all data for the Brassicaceae family)
+filter_by_ancestor_name(onekp, 'Brassicaceae')
+
+# filter by ancestor NCBI taxon ID
+filter_by_ancestor_id(onekp, 3700)
+```
+
+So to get the protein sequences for all species in Brassicaceae:
+
+``` R
+onekp <- retrieve_oneKP()
+seqs <- filter_by_ancestor_name(onekp, 'Brassicaceae')
+retrieve_proteins(seqs)
+retrieve_nucleotides(seqs)
+```
