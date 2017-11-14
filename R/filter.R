@@ -23,7 +23,7 @@
 #' filter_by_ancestor_name(onekp, 'Brassicaceae')
 #'
 #' # filter by ancestor NCBI taxon ID
-#' filter_by_ancestor_id(onekp, 3700)
+#' filter_by_ancestor_taxid(onekp, 3700)
 NULL
 
 #' @rdname filter
@@ -42,12 +42,12 @@ filter_by_ancestor_name <- function(x, names) {
   cmd <- "SELECT tax_id FROM names WHERE name_txt IN (%s)"
   cmd <- sprintf(cmd, paste0("'", names, "'", collapse=", "))
   tax_ids <- taxizedb::sql_collect(db, cmd)$tax_id
-  filter_by_ancestor_id(x, tax_ids)
+  filter_by_ancestor_taxid(x, tax_ids)
 }
 
 #' @rdname filter
 #' @export
-filter_by_ancestor_id <- function(x, ids) {
+filter_by_ancestor_taxid <- function(x, ids) {
   dbfile <- taxizedb::db_download_ncbi(verbose=FALSE)
   db <- taxizedb::src_ncbi(dbfile)
   # prepare SQL query

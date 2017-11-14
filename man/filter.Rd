@@ -4,7 +4,7 @@
 \alias{filter}
 \alias{filter_by_code}
 \alias{filter_by_ancestor_name}
-\alias{filter_by_ancestor_id}
+\alias{filter_by_ancestor_taxid}
 \alias{filter_by_species}
 \alias{filter_by_taxid}
 \title{Filter a OneKP object}
@@ -13,7 +13,7 @@ filter_by_code(x, code)
 
 filter_by_ancestor_name(x, names)
 
-filter_by_ancestor_id(x, ids)
+filter_by_ancestor_taxid(x, ids)
 
 filter_by_species(x, names)
 
@@ -51,5 +51,5 @@ filter_by_taxid(onekp, 3347)
 filter_by_ancestor_name(onekp, 'Brassicaceae')
 
 # filter by ancestor NCBI taxon ID
-filter_by_ancestor_id(onekp, 3700)
+filter_by_ancestor_taxid(onekp, 3700)
 }

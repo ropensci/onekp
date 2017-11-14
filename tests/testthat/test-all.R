@@ -20,7 +20,7 @@ test_that("Can download 1KP table of data", {
     c('Brassica nigra', 'Sinapis alba')
   )
   expect_equal(
-    filter_by_ancestor_id(kp, 981071)@table$species,
+    filter_by_ancestor_taxid(kp, 981071)@table$species,
     c('Brassica nigra', 'Sinapis alba')
   )
 })
