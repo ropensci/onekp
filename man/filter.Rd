@@ -3,15 +3,21 @@
 \name{filter}
 \alias{filter}
 \alias{filter_by_code}
-\alias{filter_by_ncbi_taxid}
+\alias{filter_by_ancestor_name}
+\alias{filter_by_ancestor_id}
 \alias{filter_by_species}
+\alias{filter_by_taxid}
 \title{Filter a OneKP object}
 \usage{
 filter_by_code(x, code)
 
-filter_by_ncbi_taxid(x, node)
+filter_by_ancestor_name(x, names)
+
+filter_by_ancestor_id(x, ids)
 
 filter_by_species(x, species)
+
+filter_by_taxid(x, tax_id)
 }
 \arguments{
 \item{x}{OneKP object}
@@ -25,6 +31,19 @@ Filter a OneKP object
 \examples{
 onekp <- retrieve_oneKP()
 onekp
-x <- filter_by_code(onekp, c('URDJ', 'ROAP'))
-x
+
+# filter by 1KP ID
+filter_by_code(onekp, c('URDJ', 'ROAP'))
+
+# filter by species name
+filter_by_species(onekp, 'Pinus radiata')
+
+# filter by species NCBI taxon ID
+filter_by_taxid(onekp, 3347)
+
+# filter by ancestor name scientific name
+filter_by_ancestor_name(onekp, 'Brassicaceae')
+
+# filter by ancestor NCBI taxon ID
+filter_by_ancestor_id(onekp, 3700)
 }
