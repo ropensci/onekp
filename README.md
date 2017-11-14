@@ -48,6 +48,6 @@ So to get the protein sequences for all species in Brassicaceae:
 ``` R
 onekp <- retrieve_oneKP()
 seqs <- filter_by_ancestor_name(onekp, 'Brassicaceae')
-retrieve_proteins(seqs)
-retrieve_nucleotides(seqs)
+download_peptides(seqs)
+download_nucleotides(seqs)
 ```

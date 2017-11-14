@@ -69,7 +69,7 @@ NULL
 download_peptides <- function(x){
   .download(
     x,
-    'Peptides',
+    'peptides',
     unwrap  = .unwrap_sequence,
     uncache = .cache_by_extension(old_ext='.faa.tar.bz2', new_ext='.faa')
   )
@@ -80,7 +80,7 @@ download_peptides <- function(x){
 download_nucleotides <- function(x){
   .download(
     x,
-    'Nucleotides',
+    'nucleotides',
     unwrap  = .unwrap_sequence,
     uncache = .cache_by_extension(old_ext='.fna.tar.bz2', new_ext='.fna')
   )
