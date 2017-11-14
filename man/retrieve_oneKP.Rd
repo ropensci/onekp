@@ -4,13 +4,17 @@
 \alias{retrieve_oneKP}
 \title{Retrieve data from 1KP}
 \usage{
-retrieve_oneKP(add_taxids = FALSE)
+retrieve_oneKP(add_taxids = TRUE, filter = TRUE)
 }
 \arguments{
 \item{add_taxids}{If TRUE, add NCBI taxon ids for each species. This
 requires downloading the NCBI taxonomy database, which will require a few
 extra minutes the first time you run the function. This step is necessary
 only if you wish to filter by NCBI taxon ids.}
+
+\item{filter}{If TRUE, filter out entries that are associated with a single
+species (for example crosses or datasets pooled across a genus). If set to
+TRUE, then add_taxids will also be set to TRUE.}
 }
 \value{
 OneKP object
