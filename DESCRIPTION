@@ -1,9 +1,12 @@
 Package: oneKP
-Title: Retrieve Data from the 1000 Plant Transcriptome Project (1KP)
+Title: Retrieve Data from the 1000 Plants Initiative (1KP)
 Version: 0.0.0.9000
 Authors@R: person("Zebulun", "Arendsee", email = "zbwrnz@gmail.com", role = c("aut", "cre"))
 Description:
-    Retrieve data from the 1000 plant transcriptome project (1KP).
+    The 1000 Plants Initiative (www.onekp.com) has sequenced the transcriptomes
+    over 1000 plant species. This package allows these sequences to be
+    retrieved by species or recursively by taxonomic group. Scientific names
+    and NCBI taxonomy IDs are both supported.
 Depends: R (>= 3.4.2)
 Imports:
     rvest,
@@ -22,4 +25,5 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
-Suggests: testthat
+Suggests: testthat,
+    covr

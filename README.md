@@ -1,3 +1,6 @@
+[![Travis-CI Build Status](https://travis-ci.org/arendsee/oneKP.svg?branch=master)](https://travis-ci.org/arendsee/oneKP)
+[![Coverage Status](https://img.shields.io/codecov/c/github/arendsee/oneKP/master.svg)](https://codecov.io/github/arendsee/oneKP?branch=master)
+
 # Access 1000 plants dataset
 
 For info on this project see the 1KP [home page](https://sites.google.com/a/ualberta.ca/onekp/).
