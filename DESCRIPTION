@@ -4,7 +4,7 @@ Version: 0.1.0
 Authors@R: person("Zebulun", "Arendsee", email = "zbwrnz@gmail.com", role = c("aut", "cre"))
 Description:
     The 1000 Plants Initiative (www.onekp.com) has sequenced the transcriptomes
-    over 1000 plant species. This package allows these sequences to be
+    of over 1000 plant species. This package allows these sequences to be
     retrieved by species or recursively by clade. Scientific names and NCBI
     taxonomy IDs are both supported.
 Depends: R (>= 3.4.2)

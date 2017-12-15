@@ -3,7 +3,17 @@
 
 # Access 1000 plants dataset
 
-For info on this project see the 1KP [home page](https://sites.google.com/a/ualberta.ca/onekp/).
+The [1000 Plants initiative
+(1KP)](https://sites.google.com/a/ualberta.ca/onekp/) provides the
+transcriptome sequences to over 1000 plants from diverse lineages. This package
+provides an R interface to the project metadata and raw sequence data.
+
+## Installation
+
+``` R
+library(devtools)
+install_github('arendsee/oneKP')
+```
 
 ## Examples
 
@@ -60,4 +70,4 @@ website. It would be better to get the data from a more stable source. Luckily,
 the 1KP data is managed by iPlant/CyVerse. Refactoring `onekp` to directly
 access CyVerse would be a mostly internal change that should not affect the
 API. It would, however, add an iRODs dependency and break portability to
-Windows (good riddance).
+Windows.
