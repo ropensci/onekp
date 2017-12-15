@@ -36,12 +36,8 @@ retrieve_oneKP <- function(add_taxids=TRUE, filter=TRUE){
         stringsAsFactors=FALSE
       )
     }
-  if(add_taxids || filter){
-    taxnames <- get_taxids(onekp@table$species, warn=!filter)
-    onekp@table <- merge(onekp@table, taxnames, by.x='species', by.y='name_txt', all.x=TRUE) 
-    if(filter){
-      onekp@table <- onekp@table[!is.na(onekp@table$tax_id), ]
-    }
+  onekp@table$tax_id <- if(add_taxids || filter){
+    taxizedb::name2taxid(onekp@table$species, out_type='uid')
   } else {
     onekp@table$tax_id <- NA
   }

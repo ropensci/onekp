@@ -37,19 +37,33 @@ filter_by_code <- function(x, code) {
 #' @export
 filter_by_clade <- function(x, clade) {
   if(all(is.character(clade))){
-    clade <- sciname2taxid(clade) 
+    clade <- taxizedb::name2taxid(clade) 
   }
-  filter_by_species(x, downstream(x, clade))
+
+  # Get all NCBI taxonomy IDs descending from the input clades
+  taxa <- lapply(taxizedb::downstream(
+    clade,
+    downto            = 'species',
+    ambiguous_node    = TRUE,
+    ambiguous_species = TRUE
+  ), function(d){
+   d$childtaxa_id 
+  }) %>% unlist %>% unname
+
+  # Find the common ids
+  onekp_species <- intersect(taxa, x@table$tax_id)
+
+  filter_by_species(x, onekp_species)
 }
 
 #' @rdname filter
 #' @export
 filter_by_species <- function(x, species) {
-  selection <- if(all(is.character(species))){
-    species <- gsub('_', ' ', species)
-    x@table[['species']] %in% species
+  selection <- if(all(grepl('^[0-9]+$', species, perl=TRUE))){
+    x@table$tax_id %in% species
   } else {
-    x@table[['tax_id']] %in% species
+    species <- gsub('_', ' ', species)
+    x@table$species %in% species
   }
   x@table <- x@table[selection, ]
   x
