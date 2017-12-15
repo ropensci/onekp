@@ -65,4 +65,4 @@ test_that("Can download nucleotide sequence", {
   expect_true(all(file.exists(nucs)))
 })
 
-unlink(OneKP, recursive=TRUE)
+unlink('OneKP', recursive=TRUE)
