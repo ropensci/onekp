@@ -1,0 +1,113 @@
+---
+title: "Introduction"
+author: "Zebulun Arendsee"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r}
+library(oneKP)
+library(knitr)
+library(magrittr)
+```
+
+## Accessing the OneKP metadata
+
+All project with the `oneKP` R package start at the same place:
+
+```{r}
+onekp <- retrieve_oneKP()
+class(onekp)
+```
+
+The only part of the OneKP object that you will need to interact with directly
+is the `@table` slot, with the form:
+
+```{r, echo=FALSE}
+onekp@table %>% head(3) %>% knitr::kable()
+```
+
+## There is some ambiguity in the data
+
+The tissue column is of great biological importance and but is unfortunately
+not very well standardized. For example, the following tissue types are included:
+
+ 1. young leaf AND shoot
+    - 'young leaves and shoot'
+    - 'young leaves and shoots'
+ 2. leaf
+    - 'leaf'
+    - 'Leaf'
+    - 'leaves'
+ 3. leaf AND flower
+    - 'leaf and flower'
+    - 'leaves and flowers'
+ 4. flower AND stem AND leaf
+
+```{r, echo=FALSE}
+onekp@table %>%
+    subset(grepl('lea[vf]', tissue, ignore.case=TRUE, perl=TRUE)) %>%
+    subset(grepl('stem', tissue, ignore.case=TRUE)) %>%
+    subset(grepl('flower', tissue, ignore.case=TRUE)) %>%
+    subset(!grepl('bud|fruit|young|apex|devel', tissue, ignore.case=TRUE, perl=TRUE)) %$%
+    tissue %>% unique %>% sort
+```
+
+Additionally, many of the entries are entirely missing a tissue annotation or
+the annotation appears to be truncated (e.g. 'the little turrets (so mix of
+young sporoph').
+
+Making sense of all this would require either actually reading the tissue
+annotations or performing fancy computational linguistics.
+
+Along with ambiguities in the tissue, there is ambiguity in the species. Many
+of the samples are not identified to the species level, but rather only species
+from a genus (e.g. *Heliconia sp.*). I attempt to trace the species to NCBI
+taxon IDs, but this fails on the ambiguous cases.
+
+## Retrieving sequence
+
+To get sequence, first subset the `onekp@table` until it contains only the
+species you want. There are several ways to do this.
+
+You can use all the normal tools for subsetting the table directly, e.g.
+
+```{r}
+subset(onekp@table, family == 'Nymphaeaceae')
+```
+
+`oneKP` also has a few builtin tools for taxonomic selection
+
+
+```{r}
+# filter by species name
+filter_by_species(onekp, 'Pinus radiata')
+
+# filter by species NCBI taxon ID
+filter_by_species(onekp, 3347)
+
+# filter by clade name scientific name (get all data for the Brassicaceae family)
+filter_by_clade(onekp, 'Brassicaceae')
+
+# filter by clade NCBI taxon ID
+filter_by_clade(onekp, 3700)
+```
+
+Once you have chosen the studies you want, you can retrieve the protein or
+transcript FASTA files:
+
+```{r, eval=FALSE}
+download_peptides(filter_by_clade(onekp, 'Brassicaceae'))
+download_nucleotides(filter_by_clade(onekp, 'Brassicaceae'))
+```
