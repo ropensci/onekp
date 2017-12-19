@@ -38,44 +38,6 @@ is the `@table` slot, with the form:
 onekp@table %>% head(3) %>% knitr::kable()
 ```
 
-## There is some ambiguity in the data
-
-The tissue column is of great biological importance and but is unfortunately
-not very well standardized. For example, the following tissue types are included:
-
- 1. young leaf AND shoot
-    - 'young leaves and shoot'
-    - 'young leaves and shoots'
- 2. leaf
-    - 'leaf'
-    - 'Leaf'
-    - 'leaves'
- 3. leaf AND flower
-    - 'leaf and flower'
-    - 'leaves and flowers'
- 4. flower AND stem AND leaf
-
-```{r, echo=FALSE}
-onekp@table %>%
-    subset(grepl('lea[vf]', tissue, ignore.case=TRUE, perl=TRUE)) %>%
-    subset(grepl('stem', tissue, ignore.case=TRUE)) %>%
-    subset(grepl('flower', tissue, ignore.case=TRUE)) %>%
-    subset(!grepl('bud|fruit|young|apex|devel', tissue, ignore.case=TRUE, perl=TRUE)) %$%
-    tissue %>% unique %>% sort
-```
-
-Additionally, many of the entries are entirely missing a tissue annotation or
-the annotation appears to be truncated (e.g. 'the little turrets (so mix of
-young sporoph').
-
-Making sense of all this would require either actually reading the tissue
-annotations or performing fancy computational linguistics.
-
-Along with ambiguities in the tissue, there is ambiguity in the species. Many
-of the samples are not identified to the species level, but rather only species
-from a genus (e.g. *Heliconia sp.*). I attempt to trace the species to NCBI
-taxon IDs, but this fails on the ambiguous cases.
-
 ## Retrieving sequence
 
 To get sequence, first subset the `onekp@table` until it contains only the

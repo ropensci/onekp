@@ -10,8 +10,7 @@ provides an R interface to the project metadata and raw sequence data.
 
 ## Installation
 
-
-```r
+```{r, eval=FALSE}
 library(devtools)
 install_github('arendsee/oneKP')
 ```
@@ -21,8 +20,7 @@ install_github('arendsee/oneKP')
 
 Retrieve the protein and gene transcript FASTA files for two 1KP transcriptomes: 
 
-
-```r
+```{r, eval=FALSE}
 onekp <- retrieve_oneKP()
 seqs <- filter_by_code(onekp, c('URDJ', 'ROAP'))
 download_proteins(seqs)
@@ -43,8 +41,7 @@ oneKP
 
 `oneKP` can also filter by species names, taxon ids, or clade.
 
-
-```r
+```{r, eval=FALSE}
 # filter by species name
 filter_by_species(onekp, 'Pinus radiata')
 
@@ -60,8 +57,7 @@ filter_by_clade(onekp, 3700)
 
 So to get the protein sequences for all species in Brassicaceae:
 
-
-```r
+```{r, eval=FALSE}
 onekp <- retrieve_oneKP()
 seqs <- filter_by_clade(onekp, 'Brassicaceae')
 download_peptides(seqs)
@@ -107,8 +103,7 @@ not very well standardized. For example, the following tissue types are included
     - 'leaves and flowers'
  4. flower AND stem AND leaf
 
-
-```r
+```{r}
 library(oneKP)
 onekp <- retrieve_oneKP()
 onekp@table %>%
@@ -117,14 +112,6 @@ onekp@table %>%
     subset(grepl('flower', tissue, ignore.case=TRUE)) %>%
     subset(!grepl('bud|fruit|young|apex|devel', tissue, ignore.case=TRUE, perl=TRUE)) %$%
     tissue %>% unique %>% sort
-```
-
-```
-##  [1] "flower, stem, leaves"   "flowers, leaves, stem" 
-##  [3] "flowers, leaves, stems" "flowers, stem, leaves" 
-##  [5] "flowers, stems, leaves" "leaf, stem, flower"    
-##  [7] "leaf, stem, flowers"    "leaves, stem, flower"  
-##  [9] "leaves, stem, flowers"  "leaves,stem, flowers"
 ```
 
 Additionally, many of the entries are entirely missing a tissue annotation or
