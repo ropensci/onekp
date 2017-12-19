@@ -10,6 +10,15 @@
 #' @name download
 NULL
 
+#' Download a file if not already cached
+#'
+#' @param x OneKP object
+#' @param field Kind of thing to download (e.g. 'nucleotides' or 'peptides')
+#' @param unwrap A function to extract the data from the raw download
+#' @param uncache A function to retrieve an item cache
+#' @param dir The directory to which final data should be written
+#' @return List of filenames
+#' @noRd
 .download <- function(x, field, unwrap, uncache, dir=file.path('oneKP', field)){
   links <- x@links[x@links$file %in% x@table[[field]], ]
   apply(links, 1, function(link){
@@ -29,6 +38,12 @@ NULL
   })
 }
 
+#' Make function to make cache names based off extensions
+#'
+#' @param old_ext The extension of the raw file
+#' @param new_ext The extension of the file to be cached
+#' @return A function of a directory name and a filename
+#' @noRd
 .cache_by_extension <- function(old_ext, new_ext){
   function(dir, file){
     path <- file.path(dir, sub(old_ext, new_ext, file))
@@ -40,6 +55,17 @@ NULL
   }
 }
 
+#' Extract a single fasta file from the compressed archive 1KP stores
+#'
+#' 1KP stores sequence as thousands of individual files, one for each gene. I
+#' simple cat them all into one file. However, the names are NOT unique. The
+#' filenames have the format '<1KP_code>.<id>.FAA'. The id is probably
+#' important and I should write it into the headers before joining them. But
+#' for now, I won't.
+#'
+#' @param path The filename of the raw data
+#' @return A path to the unwrapped data
+#' @noRd
 .unwrap_sequence <- function(path){
   # create a temporary directory that will hold the extracted files
   dir <- tempdir()
@@ -52,11 +78,6 @@ NULL
   # name and create the destination file
   final <- sub('.tar.bz2', '', path)
   file.create(final)
-  # FIXME: 1KP stores the proteins in thousands of individual files. I simple
-  # cat them all into one file.  However, the names are NOT unique. The
-  # filenames have the format '<1KP_code>.<id>.FAA'. The id is probably
-  # important and I should write it into the headers before joining them. But
-  # for now, I won't.
   file.append(final, files)
   # cleanup
   file.remove(path)

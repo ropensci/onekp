@@ -20,7 +20,7 @@ Imports:
     rlang,
     taxizedb
 Remotes:
-    arendsee/taxizedb
+    ropensci/taxizedb
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
