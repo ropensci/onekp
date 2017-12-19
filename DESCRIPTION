@@ -7,7 +7,7 @@ Description:
     of over 1000 plant species. This package allows these sequences to be
     retrieved by species or recursively by clade. Scientific names and NCBI
     taxonomy IDs are both supported.
-Depends: R (>= 3.4.2)
+Depends: R (>= 3.4.0)
 Imports:
     rvest,
     curl,
