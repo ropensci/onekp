@@ -22,3 +22,11 @@ These functions will return all files in the OneKP object of the given type
 all these files (there are over a thousand), then you should filter the
 OneKP object first, using the \code{filter_by_*} functions.
 }
+\examples{
+\dontrun{
+onekp <- retrieve_oneKP()
+seqs <- filter_by_code(onekp, c('URDJ', 'ROAP'))
+download_peptides(seqs)
+download_nucleotides(seqs)
+}
+}

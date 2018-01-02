@@ -9,6 +9,13 @@
 #' TRUE, then add_taxids will also be set to TRUE.
 #' @export
 #' @return OneKP object
+#' @examples
+#' # scrape data from the OneKP website 
+#' kp <- retrieve_oneKP()
+#' # print to see data summary
+#' kp
+#' # access the metadata table
+#' head(kp@table)
 retrieve_oneKP <- function(add_taxids=TRUE, filter=TRUE){
   oneKP_url <- 'http://www.onekp.com/public_data.html'
   onekp <- new('OneKP')

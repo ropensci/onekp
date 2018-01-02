@@ -22,3 +22,11 @@ OneKP object
 \description{
 Retrieve data from 1KP
 }
+\examples{
+# scrape data from the OneKP website 
+kp <- retrieve_oneKP()
+# print to see data summary
+kp
+# access the metadata table
+head(kp@table)
+}

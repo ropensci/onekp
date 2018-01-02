@@ -8,6 +8,13 @@
 #' @param x OneKP object
 #' @return character vector of paths to the files that were downloaded
 #' @name download
+#' @examples
+#' \dontrun{
+#' onekp <- retrieve_oneKP()
+#' seqs <- filter_by_code(onekp, c('URDJ', 'ROAP'))
+#' download_peptides(seqs)
+#' download_nucleotides(seqs)
+#' }
 NULL
 
 #' Download a file if not already cached
