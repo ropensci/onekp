@@ -5,8 +5,17 @@
 
 The [1000 Plants initiative
 (1KP)](https://sites.google.com/a/ualberta.ca/onekp/) provides the
-transcriptome sequences to over 1000 plants from diverse lineages. This package
-provides an R interface to the project metadata and raw sequence data.
+transcriptome sequences to over 1000 plants from diverse lineages
+[@matasci2014data]. This package provides an R interface to the project
+metadata and raw sequence data.
+
+The metadata for each transcriptome project is scraped from the 1KP project
+website. This metadata includes the species, tissue, and research group for
+each sequence sample. `oneKP` leverages the taxonomy program `taxizedb`, a
+local database version of `taxize` package, to allow filtering of the metadata
+by taxonomic group (entered as either a taxon name or NCBI ID). The raw
+nucleotide or translated peptide sequence can then be downloaded for the full,
+or filtered, table of transcriptom projects. 
 
 ## Installation
 
@@ -121,11 +130,18 @@ young sporoph').
 Making sense of all this would require either actually reading the tissue
 annotations or performing fancy computational linguistics.
 
-## Future Directions
 
-I currently access the data by scraping URLs from an HTML table on the 1KP
-website. It would be better to get the data from a more stable source. Luckily,
-the 1KP data is managed by iPlant/CyVerse. Refactoring `onekp` to directly
-access CyVerse would be a mostly internal change that should not affect the
-API. It would, however, add an iRODs dependency and break portability to
-Windows.
+## Alternatives to using `oneKP`
+
+An alternative to using this `oneKP` package is to access the data directly
+through CyVerse (previously iPlant). CyVerse efficiently distributes data using
+the iRODS data system. This approach is preferable for high-throughput cases or
+in where iRODS is already in play.  Further, accessing data straight from the
+source at CyVerse is more stable than scraping it from project website.
+However, the `oneKP` R package is generally easier to use (no iRODS dependency
+or CyVerse API) and offers powerful filtering solutions. 
+
+
+# Funding
+
+This material is based upon work supported by the National Science Foundation under Grant No. IOS 1546858
