@@ -10,6 +10,8 @@ test_that("Can download 1KP table of data", {
     names(kp@table),
     c('species', 'code', 'family', 'tissue', 'peptides', 'nucleotides', 'tax_id')
   )
+  # check that printing at least prints something ...
+  expect_output(print(kp))
   # expect_true(!any(is.na(kp@table$tax_id)))
   expect_equal(
     filter_by_code(kp, c('URDJ', 'ROAP'))@table$tax_id,
