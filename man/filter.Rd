@@ -29,7 +29,7 @@ OneKP object
 Filter a OneKP object
 }
 \examples{
-onekp <- retrieve_oneKP()
+onekp <- retrieve_onekp()
 onekp
 
 # filter by 1KP ID

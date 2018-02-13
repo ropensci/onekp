@@ -1,4 +1,4 @@
 library(testthat)
-library(oneKP)
+library(onekp)
 
-test_check("oneKP")
+test_check("onekp")

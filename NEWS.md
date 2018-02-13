@@ -18,6 +18,8 @@
 
  * Add space between equal signs in argument lists
 
+ * Change package name from `oneKP` to `onekp`
+
 # onekp 0.1.0
 
  * Initial release

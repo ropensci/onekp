@@ -17,17 +17,17 @@ knitr::opts_chunk$set(
 ```
 
 ```{r}
-library(oneKP)
+library(onekp)
 library(knitr)
 library(magrittr)
 ```
 
 ## Accessing the OneKP metadata
 
-All project with the `oneKP` R package start at the same place:
+All project with the `onekp` R package start at the same place:
 
 ```{r}
-onekp <- retrieve_oneKP()
+onekp <- retrieve_onekp()
 class(onekp)
 ```
 
@@ -49,7 +49,7 @@ You can use all the normal tools for subsetting the table directly, e.g.
 subset(onekp@table, family == 'Nymphaeaceae')
 ```
 
-`oneKP` also has a few builtin tools for taxonomic selection
+`onekp` also has a few builtin tools for taxonomic selection
 
 
 ```{r}

@@ -10,7 +10,7 @@
 #' @name download
 #' @examples
 #' \dontrun{
-#' onekp <- retrieve_oneKP()
+#' onekp <- retrieve_onekp()
 #' seqs <- filter_by_code(onekp, c('URDJ', 'ROAP'))
 #' download_peptides(seqs)
 #' download_nucleotides(seqs)

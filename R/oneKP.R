@@ -5,8 +5,8 @@
 utils::globalVariables(c("%>%", "."))
 NULL
 
-#' oneKP: access data from the 1KP project
+#' onekp: access data from the 1KP project
 #'
 #' @docType package
-#' @name oneKP
+#' @name onekp
 NULL

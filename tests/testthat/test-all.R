@@ -5,7 +5,7 @@ prots <- NULL
 nucs <- NULL
 
 test_that("Can download 1KP table of data", {
-  expect_silent(kp <<- retrieve_oneKP())
+  expect_silent(kp <<- retrieve_onekp())
   expect_equal(
     names(kp@table),
     c(

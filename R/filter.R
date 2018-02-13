@@ -7,7 +7,7 @@
 #' @return OneKP object
 #' @name filter
 #' @examples
-#' onekp <- retrieve_oneKP()
+#' onekp <- retrieve_onekp()
 #' onekp
 #'
 #' # filter by 1KP ID

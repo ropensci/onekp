@@ -11,15 +11,15 @@
 #' @return OneKP object
 #' @examples
 #' # scrape data from the OneKP website 
-#' kp <- retrieve_oneKP()
+#' kp <- retrieve_onekp()
 #' # print to see data summary
 #' kp
 #' # access the metadata table
 #' head(kp@table)
-retrieve_oneKP <- function(add_taxids = TRUE, filter = TRUE){
-  oneKP_url <- 'http://www.onekp.com/public_data.html'
+retrieve_onekp <- function(add_taxids = TRUE, filter = TRUE){
+  onekp_url <- 'http://www.onekp.com/public_data.html'
   onekp <- new('OneKP')
-  onekp@table <- oneKP_url %>%
+  onekp@table <- onekp_url %>%
     xml2::read_html() %>%
     rvest::html_nodes('table') %>%
     rvest::html_table(header = TRUE) %>%
@@ -32,7 +32,7 @@ retrieve_oneKP <- function(add_taxids = TRUE, filter = TRUE){
       peptides    = 'Peptides',
       nucleotides = 'Nucleotides'
     )
-  onekp@links <- oneKP_url %>%
+  onekp@links <- onekp_url %>%
     xml2::read_html() %>%
     rvest::html_nodes('td a') %>%
     xml2::as_list() %>%

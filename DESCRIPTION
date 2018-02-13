@@ -1,4 +1,4 @@
-Package: oneKP
+Package: onekp
 Title: Retrieve Data from the 1000 Plants Initiative (1KP)
 Version: 0.1.0
 Authors@R: person("Zebulun", "Arendsee", email = "zbwrnz@gmail.com", role = c("aut", "cre"))
@@ -20,8 +20,8 @@ Imports:
 Remotes:
     ropensci/taxizedb
 License: MIT + file LICENSE
-URL: https://github.com/arendsee/oneKP
-BugReports: https://github.com/arendsee/oneKP/issues
+URL: https://github.com/arendsee/onekp
+BugReports: https://github.com/arendsee/onekp/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
