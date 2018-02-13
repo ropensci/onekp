@@ -26,7 +26,7 @@ NULL
 #' @param dir The directory to which final data should be written
 #' @return List of filenames
 #' @noRd
-.download <- function(x, field, unwrap, uncache, dir=file.path('oneKP', field)){
+.download <- function(x, field, unwrap, uncache, dir = file.path('oneKP', field)){
   links <- x@links[x@links$file %in% x@table[[field]], ]
   apply(links, 1, function(link){
     file <- link[1]
@@ -38,8 +38,8 @@ NULL
     } else {
       path <- file.path(dir, file)
       if(!dir.exists(dir))
-        dir.create(dir, recursive=TRUE)
-      curl::curl_download(url=url, destfile=path, quiet=TRUE)
+        dir.create(dir, recursive = TRUE)
+      curl::curl_download(url = url, destfile = path, quiet = TRUE)
       unwrap(path)
     }
   })
@@ -79,16 +79,16 @@ NULL
   if(!dir.exists(dir))
     dir.create(dir)
   # get names of all files
-  files <- file.path(dir, untar(path, compressed='bzip2', list=TRUE))
+  files <- file.path(dir, untar(path, compressed = 'bzip2', list = TRUE))
   # extract files 
-  untar(path, compressed='bzip2', exdir=dir)
+  untar(path, compressed = 'bzip2', exdir = dir)
   # name and create the destination file
   final <- sub('.tar.bz2', '', path)
   file.create(final)
   file.append(final, files)
   # cleanup
   file.remove(path)
-  unlink(dir, recursive=TRUE)
+  unlink(dir, recursive = TRUE)
   final
 }
 
@@ -99,7 +99,7 @@ download_peptides <- function(x){
     x,
     'peptides',
     unwrap  = .unwrap_sequence,
-    uncache = .cache_by_extension(old_ext='.faa.tar.bz2', new_ext='.faa')
+    uncache = .cache_by_extension(old_ext = '.faa.tar.bz2', new_ext = '.faa')
   )
 }
 
@@ -110,6 +110,6 @@ download_nucleotides <- function(x){
     x,
     'nucleotides',
     unwrap  = .unwrap_sequence,
-    uncache = .cache_by_extension(old_ext='.fna.tar.bz2', new_ext='.fna')
+    uncache = .cache_by_extension(old_ext = '.fna.tar.bz2', new_ext = '.fna')
   )
 }

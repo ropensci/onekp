@@ -59,7 +59,7 @@ filter_by_clade <- function(x, clade) {
 #' @rdname filter
 #' @export
 filter_by_species <- function(x, species) {
-  selection <- if(all(grepl('^[0-9]+$', species, perl=TRUE))){
+  selection <- if(all(grepl('^[0-9]+$', species, perl = TRUE))){
     x@table$tax_id %in% species
   } else {
     species <- gsub('_', ' ', species)

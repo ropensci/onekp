@@ -16,20 +16,20 @@
 #' kp
 #' # access the metadata table
 #' head(kp@table)
-retrieve_oneKP <- function(add_taxids=TRUE, filter=TRUE){
+retrieve_oneKP <- function(add_taxids = TRUE, filter = TRUE){
   oneKP_url <- 'http://www.onekp.com/public_data.html'
   onekp <- new('OneKP')
   onekp@table <- oneKP_url %>%
     xml2::read_html() %>%
     rvest::html_nodes('table') %>%
-    rvest::html_table(header=TRUE) %>%
+    rvest::html_table(header = TRUE) %>%
     { .[[1]] } %>%
     dplyr::select(
-      species = 'Species',
-      code = '1kP_Code',
-      family = 'Family',
-      tissue = 'Tissue Type',
-      peptides = 'Peptides',
+      species     = 'Species',
+      code        = '1kP_Code',
+      family      = 'Family',
+      tissue      = 'Tissue Type',
+      peptides    = 'Peptides',
       nucleotides = 'Nucleotides'
     )
   onekp@links <- oneKP_url %>%
@@ -39,12 +39,12 @@ retrieve_oneKP <- function(add_taxids=TRUE, filter=TRUE){
     {
       data.frame(
         file = unlist(.),
-        url  = vapply(FUN.VALUE="", ., function(link){attributes(link)$href}),
-        stringsAsFactors=FALSE
+        url  = vapply(FUN.VALUE = "", ., function(link){attributes(link)$href}),
+        stringsAsFactors = FALSE
       )
     }
   onekp@table$tax_id <- if(add_taxids || filter){
-    taxizedb::name2taxid(onekp@table$species, out_type='uid')
+    taxizedb::name2taxid(onekp@table$species, out_type = 'uid')
   } else {
     onekp@table$tax_id <- NA
   }

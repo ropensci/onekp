@@ -34,7 +34,7 @@ class(onekp)
 The only part of the OneKP object that you will need to interact with directly
 is the `@table` slot, with the form:
 
-```{r, echo=FALSE}
+```{r, echo = FALSE}
 onekp@table %>% head(3) %>% knitr::kable()
 ```
 
@@ -69,7 +69,7 @@ filter_by_clade(onekp, 3700)
 Once you have chosen the studies you want, you can retrieve the protein or
 transcript FASTA files:
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
 download_peptides(filter_by_clade(onekp, 'Brassicaceae'))
 download_nucleotides(filter_by_clade(onekp, 'Brassicaceae'))
 ```

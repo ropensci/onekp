@@ -14,6 +14,10 @@
 
  * Removed unused imports `readr` and `tidyr`
 
+## Updates based on Zachary Foster's review
+
+ * Add space between equal signs in argument lists
+
 # onekp 0.1.0
 
  * Initial release
