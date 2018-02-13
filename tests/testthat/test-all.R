@@ -8,7 +8,15 @@ test_that("Can download 1KP table of data", {
   expect_silent(kp <<- retrieve_oneKP())
   expect_equal(
     names(kp@table),
-    c('species', 'code', 'family', 'tissue', 'peptides', 'nucleotides', 'tax_id')
+    c(
+      'species',
+      'code',
+      'family',
+      'tissue',
+      'peptides',
+      'nucleotides',
+      'tax_id'
+    )
   )
   # check that printing at least prints something ...
   expect_output(print(kp))
