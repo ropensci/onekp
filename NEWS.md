@@ -20,6 +20,8 @@
 
  * Add CONDUCT.md
 
+ * Add R `devel` test to travis
+
 ## Updates based on Zachary Foster's review
 
  * Add space between equal signs in argument lists
