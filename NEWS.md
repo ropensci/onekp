@@ -20,6 +20,8 @@
 
  * Change package name from `oneKP` to `onekp`
 
+ * Let user set the download directory (defaulting to a tempdir).
+
 # onekp 0.1.0
 
  * Initial release

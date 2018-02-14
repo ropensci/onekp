@@ -1,8 +1,8 @@
 context("all")
 
-kp <- NULL
+kp    <- NULL
 prots <- NULL
-nucs <- NULL
+nucs  <- NULL
 
 test_that("Can download 1KP table of data", {
   expect_silent(kp <<- retrieve_onekp())
@@ -37,10 +37,12 @@ test_that("Can download 1KP table of data", {
   )
 })
 
+test_dir <- 'onekp_test'
 test_that("Can download protein sequence", {
+  dir <- file.path(test_dir, 'pro')
   expect_equal(
     {
-      prots <<- download_peptides(filter_by_clade(kp, 'Brassicaceae'))
+      prots <<- download_peptides(filter_by_clade(kp, 'Brassicaceae'), dir)
       gsub("\\.faa$", "", basename(prots)) 
     },
     filter_by_clade(kp, 'Brassicaceae')@table$code
@@ -48,7 +50,7 @@ test_that("Can download protein sequence", {
   # test re-downloading, which should reuse the existing files
   expect_equal(
     {
-      prots <<- download_peptides(filter_by_clade(kp, 'Brassicaceae'))
+      prots <<- download_peptides(filter_by_clade(kp, 'Brassicaceae'), dir)
       gsub("\\.faa$", "", basename(prots)) 
     },
     filter_by_clade(kp, 'Brassicaceae')@table$code
@@ -57,9 +59,10 @@ test_that("Can download protein sequence", {
 })
 
 test_that("Can download nucleotide sequence", {
+  dir <- file.path(test_dir, 'nuc')
   expect_equal(
     {
-      nucs <<- download_nucleotides(filter_by_clade(kp, 'Brassicaceae'))
+      nucs <<- download_nucleotides(filter_by_clade(kp, 'Brassicaceae'), dir)
       gsub("\\.fna$", "", basename(nucs)) 
     },
     filter_by_clade(kp, 'Brassicaceae')@table$code
@@ -67,7 +70,7 @@ test_that("Can download nucleotide sequence", {
   # test re-downloading, which should reuse the existing files
   expect_equal(
     {
-      nucs <<- download_nucleotides(filter_by_clade(kp, 'Brassicaceae'))
+      nucs <<- download_nucleotides(filter_by_clade(kp, 'Brassicaceae'), dir)
       gsub("\\.fna$", "", basename(nucs)) 
     },
     filter_by_clade(kp, 'Brassicaceae')@table$code
@@ -75,4 +78,4 @@ test_that("Can download nucleotide sequence", {
   expect_true(all(file.exists(nucs)))
 })
 
-unlink('OneKP', recursive = TRUE)
+unlink('onekp_test', recursive = TRUE)

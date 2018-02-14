@@ -6,6 +6,7 @@
 #' OneKP object first, using the \code{filter_by_*} functions.
 #'
 #' @param x OneKP object
+#' @param dir Directory in which to store the downloaded data
 #' @return character vector of paths to the files that were downloaded
 #' @name download
 #' @examples
@@ -26,7 +27,7 @@ NULL
 #' @param dir The directory to which final data should be written
 #' @return List of filenames
 #' @noRd
-.download <- function(x, field, unwrap, uncache, dir = file.path('oneKP', field)){
+.download <- function(x, field, unwrap, uncache, dir){
   links <- x@links[x@links$file %in% x@table[[field]], ]
   apply(links, 1, function(link){
     file <- link[1]
@@ -75,9 +76,13 @@ NULL
 #' @noRd
 .unwrap_sequence <- function(path){
   # create a temporary directory that will hold the extracted files
-  dir <- tempdir()
+  # NOTE: The R session uses one dedicated temporary directory, so I do not
+  # want to delete everything inside it in this functions (that can have side
+  # effects). Instead, I make a directory inside the temporary directory, and
+  # later delete it.
+  dir <- file.path(tempdir(), 'onekp_sequences')
   if(!dir.exists(dir))
-    dir.create(dir)
+    dir.create(dir, recursive=TRUE)
   # get names of all files
   files <- file.path(dir, untar(path, compressed = 'bzip2', list = TRUE))
   # extract files 
@@ -89,27 +94,32 @@ NULL
   # cleanup
   file.remove(path)
   unlink(dir, recursive = TRUE)
+  if(length(list.files(tempdir())) == 0){
+    unlink(tempdir())
+  }
   final
 }
 
 #' @rdname download
 #' @export
-download_peptides <- function(x){
+download_peptides <- function(x, dir=file.path(tempdir(), 'peptides')){
   .download(
     x,
     'peptides',
     unwrap  = .unwrap_sequence,
-    uncache = .cache_by_extension(old_ext = '.faa.tar.bz2', new_ext = '.faa')
+    uncache = .cache_by_extension(old_ext = '.faa.tar.bz2', new_ext = '.faa'),
+    dir     = dir
   )
 }
 
 #' @rdname download
 #' @export
-download_nucleotides <- function(x){
+download_nucleotides <- function(x, dir=file.path(tempdir(), 'nucleotides')){
   .download(
     x,
     'nucleotides',
     unwrap  = .unwrap_sequence,
-    uncache = .cache_by_extension(old_ext = '.fna.tar.bz2', new_ext = '.fna')
+    uncache = .cache_by_extension(old_ext = '.fna.tar.bz2', new_ext = '.fna'),
+    dir     = dir
   )
 }

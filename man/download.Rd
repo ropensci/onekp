@@ -6,12 +6,14 @@
 \alias{download_nucleotides}
 \title{Download a dataset}
 \usage{
-download_peptides(x)
+download_peptides(x, dir = file.path(tempdir(), "peptides"))
 
-download_nucleotides(x)
+download_nucleotides(x, dir = file.path(tempdir(), "nucleotides"))
 }
 \arguments{
 \item{x}{OneKP object}
+
+\item{dir}{Directory in which to store the downloaded data}
 }
 \value{
 character vector of paths to the files that were downloaded
