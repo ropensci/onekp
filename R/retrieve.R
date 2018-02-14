@@ -28,12 +28,14 @@
 #' @export
 #' @return OneKP object
 #' @examples
+#' \dontrun{
 #' # scrape data from the OneKP website 
 #' kp <- retrieve_onekp()
 #' # print to see data summary
 #' kp
 #' # access the metadata table
 #' head(kp@table)
+#' }
 retrieve_onekp <- function(add_taxids = TRUE, filter = TRUE){
   onekp_url <- 'http://www.onekp.com/public_data.html'
   onekp <- new('OneKP')

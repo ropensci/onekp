@@ -36,6 +36,10 @@
 
  * Add documentation details to `retrieve_onekp`
 
+ * Update intro vignette
+
+ * Do not run examples that access the internet (call `retrieve_onekp`)
+
 # onekp 0.1.0
 
  * Initial release

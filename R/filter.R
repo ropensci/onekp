@@ -7,6 +7,7 @@
 #' @return OneKP object
 #' @name filter
 #' @examples
+#' \dontrun{
 #' onekp <- retrieve_onekp()
 #' onekp
 #'
@@ -24,6 +25,7 @@
 #'
 #' # filter by clade NCBI taxon ID
 #' filter_by_clade(onekp, 3700)
+#' }
 NULL
 
 #' @rdname filter

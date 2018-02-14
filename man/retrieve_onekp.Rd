@@ -40,10 +40,12 @@ The metadata table contains the following columns:
 }
 }
 \examples{
+\dontrun{
 # scrape data from the OneKP website 
 kp <- retrieve_onekp()
 # print to see data summary
 kp
 # access the metadata table
 head(kp@table)
+}
 }

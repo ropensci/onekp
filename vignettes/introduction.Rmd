@@ -31,8 +31,13 @@ onekp <- retrieve_onekp()
 class(onekp)
 ```
 
+The `retrieve_onekp` function scrapes the metadata associated with each
+transcriptome project from the [1KP public data
+page](http://www.onekp.com/public_data.html). It also links each species to its
+NCBI taxonomy ID (which is used later to filter by clade).
+
 The only part of the OneKP object that you will need to interact with directly
-is the `@table` slot, with the form:
+is the `@table` slot, a data.frame with the form:
 
 ```{r, echo = FALSE}
 onekp@table %>% head(3) %>% knitr::kable()
@@ -46,7 +51,7 @@ species you want. There are several ways to do this.
 You can use all the normal tools for subsetting the table directly, e.g.
 
 ```{r}
-subset(onekp@table, family == 'Nymphaeaceae')
+onekp@table <- subset(onekp@table, family == 'Nymphaeaceae')
 ```
 
 `onekp` also has a few builtin tools for taxonomic selection
@@ -73,3 +78,8 @@ transcript FASTA files:
 download_peptides(filter_by_clade(onekp, 'Brassicaceae'))
 download_nucleotides(filter_by_clade(onekp, 'Brassicaceae'))
 ```
+
+This will download the files into a temporary directory. Alternatively, you may
+set your own directory with the `dir` argument. The downloaded protein FASTA
+files have the extension `.faa` and the DNA files the extension `.fna`. The
+basename for each file is the 1KP 4-letter code.
