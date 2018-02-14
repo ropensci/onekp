@@ -14,6 +14,8 @@
 
  * Removed unused imports `readr` and `tidyr`
 
+ * Re-export the `magrittr` `%>%` operator
+
 ## Updates based on Zachary Foster's review
 
  * Add space between equal signs in argument lists
