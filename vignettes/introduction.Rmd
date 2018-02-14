@@ -58,10 +58,10 @@ onekp@table <- subset(onekp@table, family == 'Nymphaeaceae')
 
 
 ```{r}
-# filter by species name
+# filter by species name ('species' column of onekp@table)
 filter_by_species(onekp, 'Pinus radiata')
 
-# filter by species NCBI taxon ID
+# filter by species NCBI taxon ID  ('tax_id' column of onekp@table)
 filter_by_species(onekp, 3347)
 
 # filter by clade name scientific name (get all data for the Brassicaceae family)

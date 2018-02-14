@@ -40,6 +40,14 @@
 
  * Do not run examples that access the internet (call `retrieve_onekp`)
 
+## Updates based on Jessica Minnier's review  
+
+ There was some overlap between the two reviews, here I just list updates made that are unique to this review.
+
+ * Clarify `filter_by_code` and `filter_by_species` examples
+
+ * Cleanup the `download` documentation
+
 # onekp 0.1.0
 
  * Initial release
