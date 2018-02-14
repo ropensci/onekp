@@ -14,6 +14,14 @@
 
  * Removed unused imports `readr` and `tidyr`
 
+## Updates based on Zachary Foster's review
+
+ * Add space between equal signs in argument lists
+
+ * Change package name from `oneKP` to `onekp`
+
+ * Let user set the download directory (defaulting to a tempdir).
+
  * Re-export the `magrittr` `%>%` operator
 
  * Update README
@@ -22,13 +30,7 @@
 
  * Add R `devel` test to travis
 
-## Updates based on Zachary Foster's review
-
- * Add space between equal signs in argument lists
-
- * Change package name from `oneKP` to `onekp`
-
- * Let user set the download directory (defaulting to a tempdir).
+ * More package-level documentation
 
 # onekp 0.1.0
 
