@@ -34,6 +34,8 @@
 
  * Do not export print.OneKP function
 
+ * Add documentation details to `retrieve_onekp`
+
 # onekp 0.1.0
 
  * Initial release

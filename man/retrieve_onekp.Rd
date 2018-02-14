@@ -20,7 +20,24 @@ TRUE, then add_taxids will also be set to TRUE.}
 OneKP object
 }
 \description{
-Retrieve data from 1KP
+Download the table of metadata for each transcriptome from the 1KP website
+(\url{http://www.onekp.com/public_data.html}). The metadata are wrapped into
+a \code{OneKp} S4 object. This object contains two data.frames: 1)
+\code{@table}, the main metadata table and 2) \code{@links} a map from
+resource to URL (mostly for internal use).
+}
+\details{
+The metadata table contains the following columns:
+
+\itemize{
+  \item species - species scientific name
+  \item code - 4-letter 1KP transcriptome unique identifier
+  \item family - the taxonomic family
+  \item tissue - the tissue(s) that where sequenced
+  \item peptides - the filename for the transcript proteins
+  \item nucleotides - the filename for the transcript DNA
+  \item tax_id (optional) - the species NCBI taxonomy ID
+}
 }
 \examples{
 # scrape data from the OneKP website 
