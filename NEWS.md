@@ -54,6 +54,16 @@
  * Add handling for downloading nothing: if everything is filtered out, just
    return an empty character vector.
 
+ * Add test coverage for corner cases
+
+   - filtering by clade with a clade that is not in the NCBI common tree raises
+     an error.
+
+   - filtering with valid input, but where no rows are selected, returns
+     a OneKP object with 0 rows (no error).
+
+   - download an empty object returns an empty vector of filenames (no error)
+
 # onekp 0.1.0
 
  * Initial release

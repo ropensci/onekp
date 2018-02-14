@@ -39,7 +39,12 @@ filter_by_code <- function(x, code) {
 #' @export
 filter_by_clade <- function(x, clade) {
   if(all(is.character(clade))){
-    clade <- taxizedb::name2taxid(clade) 
+    taxids <- taxizedb::name2taxid(clade) 
+    if(any(is.na(taxids))){
+      msg <- "The following clades are not in NCBI: "
+      stop(msg, paste(clade[is.na(taxids)], collapse=", "))
+    }
+    clade <- taxids
   }
 
   # Get all NCBI taxonomy IDs descending from the input clades

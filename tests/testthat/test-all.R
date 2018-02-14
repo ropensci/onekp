@@ -79,7 +79,13 @@ test_that("Can download nucleotide sequence", {
 })
 
 test_that("Nothing gets you nothing", {
+  # filter by an imaginary species
   expect_equal(nrow(filter_by_species(kp, 'foobar')@table), 0)
+  # filter by clade that is in NCBI but not in this dataset 
+  expect_equal(nrow(filter_by_clade(kp, 'Homo')@table), 0)
+  # filter by a code that is not in the table
+  expect_equal(nrow(filter_by_code(kp, 'asdfasdf')@table), 0)
+  # downloading an empty table gets an empty vector of paths
   expect_true(identical(
     download_peptides(filter_by_species(kp, 'foobar')),
     character(0)
@@ -88,6 +94,10 @@ test_that("Nothing gets you nothing", {
     download_nucleotides(filter_by_species(kp, 'foobar')),
     character(0)
   ))
+})
+
+test_that("Bad input to filter triggers an error", {
+  expect_error(filter_by_clade(kp, "Dragon"))
 })
 
 unlink('onekp_test', recursive = TRUE)
