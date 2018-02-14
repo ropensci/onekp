@@ -48,6 +48,9 @@
 
  * Cleanup the `download` documentation
 
+ * Add `absolute` parameter to `download_*` functions. If TRUE, this returns
+   the absolute path to the retrieved data.
+
 # onekp 0.1.0
 
  * Initial release

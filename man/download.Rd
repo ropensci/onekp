@@ -6,9 +6,11 @@
 \alias{download_nucleotides}
 \title{Download a dataset}
 \usage{
-download_peptides(x, dir = file.path(tempdir(), "peptides"))
+download_peptides(x, dir = file.path(tempdir(), "peptides"),
+  absolute = FALSE)
 
-download_nucleotides(x, dir = file.path(tempdir(), "nucleotides"))
+download_nucleotides(x, dir = file.path(tempdir(), "nucleotides"),
+  absolute = FALSE)
 }
 \arguments{
 \item{x}{OneKP object}
@@ -20,14 +22,19 @@ character vector of paths to the files that were downloaded
 }
 \description{
 These functions will return all files in the OneKP object of the given type
-(e.g. protein FASTA files for get_peptides). If you do not want to retrieve
+(protein or DNA FASTA files for \code{download_peptides} and
+\code{download_nucleotides}, respectively). If you do not want to retrieve
 all these files (there are over a thousand), then you should filter the
 OneKP object first, using the \code{filter_by_*} functions.
 }
 \examples{
 \dontrun{
 onekp <- retrieve_onekp()
+
+# Filter by 1KP code (from `onekp@table$code` column)
 seqs <- filter_by_code(onekp, c('URDJ', 'ROAP'))
+
+# Download FASTA files to temporary directory 
 download_peptides(seqs)
 download_nucleotides(seqs)
 }

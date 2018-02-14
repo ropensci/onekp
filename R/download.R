@@ -30,11 +30,12 @@ NULL
 #' @param unwrap A function to extract the data from the raw download
 #' @param uncache A function to retrieve an item cache
 #' @param dir The directory to which final data should be written
-#' @return List of filenames
+#' @param absolute If TRUE, return absolute paths (default=FALSE)
+#' @return character vector of filenames
 #' @noRd
-.download <- function(x, field, unwrap, uncache, dir){
+.download <- function(x, field, unwrap, uncache, dir, absolute=FALSE){
   links <- x@links[x@links$file %in% x@table[[field]], ]
-  apply(links, 1, function(link){
+  paths <- apply(links, 1, function(link){
     file <- link[1]
     url  <- link[2]
     cache <- uncache(dir, file)
@@ -49,6 +50,11 @@ NULL
       unwrap(path)
     }
   })
+  if(absolute){
+    # expand all paths to absolute paths
+    paths <- normalizePath(paths)
+  }
+  paths
 }
 
 #' Make function to make cache names based off extensions
@@ -107,24 +113,34 @@ NULL
 
 #' @rdname download
 #' @export
-download_peptides <- function(x, dir=file.path(tempdir(), 'peptides')){
+download_peptides <- function(
+  x,
+  dir      = file.path(tempdir(), 'peptides'),
+  absolute = FALSE
+){
   .download(
     x,
     'peptides',
-    unwrap  = .unwrap_sequence,
-    uncache = .cache_by_extension(old_ext = '.faa.tar.bz2', new_ext = '.faa'),
-    dir     = dir
+    unwrap   = .unwrap_sequence,
+    uncache  = .cache_by_extension(old_ext = '.faa.tar.bz2', new_ext = '.faa'),
+    dir      = dir,
+    absolute = absolute
   )
 }
 
 #' @rdname download
 #' @export
-download_nucleotides <- function(x, dir=file.path(tempdir(), 'nucleotides')){
+download_nucleotides <- function(
+  x,
+  dir=file.path(tempdir(), 'nucleotides'),
+  absolute = FALSE
+){
   .download(
     x,
     'nucleotides',
-    unwrap  = .unwrap_sequence,
-    uncache = .cache_by_extension(old_ext = '.fna.tar.bz2', new_ext = '.fna'),
-    dir     = dir
+    unwrap   = .unwrap_sequence,
+    uncache  = .cache_by_extension(old_ext = '.fna.tar.bz2', new_ext = '.fna'),
+    dir      = dir,
+    absolute = absolute
   )
 }
