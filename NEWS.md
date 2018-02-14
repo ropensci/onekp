@@ -18,6 +18,8 @@
 
  * Update README
 
+ * Add CONDUCT.md
+
 ## Updates based on Zachary Foster's review
 
  * Add space between equal signs in argument lists
