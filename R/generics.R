@@ -2,7 +2,6 @@
 #'
 #' @param x OneKP object
 #' @param ... Additional arguments (unused)
-#' @export
 print.OneKP <- function(x, ...){
   cat("OneKP object\n")
   cat(sprintf(

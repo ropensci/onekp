@@ -32,6 +32,8 @@
 
  * More package-level documentation
 
+ * Do not export print.OneKP function
+
 # onekp 0.1.0
 
  * Initial release
