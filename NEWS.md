@@ -16,6 +16,8 @@
 
  * Re-export the `magrittr` `%>%` operator
 
+ * Update README
+
 ## Updates based on Zachary Foster's review
 
  * Add space between equal signs in argument lists

@@ -2,21 +2,29 @@
 [![Coverage Status](https://img.shields.io/codecov/c/github/arendsee/onekp/master.svg)](https://codecov.io/github/arendsee/onekp?branch=master)
 [![](https://badges.ropensci.org/178_status.svg)](https://github.com/ropensci/onboarding/issues/178)
 
-# Access 1000 plants dataset
+# onekp
 
 The [1000 Plants initiative
 (1KP)](https://sites.google.com/a/ualberta.ca/onekp/) provides the
-transcriptome sequences to over 1000 plants from diverse lineages
-[@matasci2014data]. This package provides an R interface to the project
-metadata and raw sequence data.
+transcriptome sequences to over 1000 plants from diverse lineages. `onekp`
+allows researchers in plant genomics and transcriptomics to access this dataset
+through a simple R interface. The metadata for each transcriptome project is
+scraped from the 1KP project website. This metadata includes the species,
+tissue, and research group for each sequence sample. `onekp` leverages the
+taxonomy program `taxizedb`, a local database version of `taxize` package, to
+allow filtering of the metadata by taxonomic group (entered as either a taxon
+name or NCBI ID). The raw nucleotide or translated peptide sequence can then be
+downloaded for the full, or filtered, table of transcriptome projects. 
 
-The metadata for each transcriptome project is scraped from the 1KP project
-website. This metadata includes the species, tissue, and research group for
-each sequence sample. `onekp` leverages the taxonomy program `taxizedb`, a
-local database version of `taxize` package, to allow filtering of the metadata
-by taxonomic group (entered as either a taxon name or NCBI ID). The raw
-nucleotide or translated peptide sequence can then be downloaded for the full,
-or filtered, table of transcriptom projects. 
+## Alternatives to `onekp`
+
+The data may also be accessed directly through CyVerse (previously iPlant).
+CyVerse efficiently distributes data using the iRODS data system. This approach
+is preferable for high-throughput cases or in where iRODS is already in play.
+Further, accessing data straight from the source at CyVerse is more stable than
+scraping it from project website. However, the `onekp` R package is generally
+easier to use (no iRODS dependency or CyVerse API) and offers powerful
+filtering solutions. 
 
 ## Installation
 
@@ -33,18 +41,18 @@ Retrieve the protein and gene transcript FASTA files for two 1KP transcriptomes:
 ```{r, eval=FALSE}
 onekp <- retrieve_onekp()
 seqs <- filter_by_code(onekp, c('URDJ', 'ROAP'))
-download_peptides(seqs)
-download_nucleotides(seqs)
+download_peptides(seqs, 'oneKP/pep')
+download_nucleotides(seqs, 'oneKP/nuc')
 ```
 
 This will create the following directory:
 
 ```
 oneKP
- ├── Nucleotides
+ ├── nuc 
  │   ├── ROAP.fna
  │   └── URDJ.fna
- └── Peptides
+ └── pep
      ├── ROAP.faa
      └── URDJ.faa
 ```
@@ -70,8 +78,8 @@ So to get the protein sequences for all species in Brassicaceae:
 ```{r, eval=FALSE}
 onekp <- retrieve_onekp()
 seqs <- filter_by_clade(onekp, 'Brassicaceae')
-download_peptides(seqs)
-download_nucleotides(seqs)
+download_peptides(seqs, 'oneKP/pep')
+download_nucleotides(seqs, 'oneKP/nuc')
 ```
 
 
@@ -130,17 +138,6 @@ young sporoph').
 
 Making sense of all this would require either actually reading the tissue
 annotations or performing fancy computational linguistics.
-
-
-## Alternatives to using `onekp`
-
-An alternative to using this `onekp` package is to access the data directly
-through CyVerse (previously iPlant). CyVerse efficiently distributes data using
-the iRODS data system. This approach is preferable for high-throughput cases or
-in where iRODS is already in play.  Further, accessing data straight from the
-source at CyVerse is more stable than scraping it from project website.
-However, the `onekp` R package is generally easier to use (no iRODS dependency
-or CyVerse API) and offers powerful filtering solutions. 
 
 
 # Funding
