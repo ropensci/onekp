@@ -51,6 +51,9 @@
  * Add `absolute` parameter to `download_*` functions. If TRUE, this returns
    the absolute path to the retrieved data.
 
+ * Add handling for downloading nothing: if everything is filtered out, just
+   return an empty character vector.
+
 # onekp 0.1.0
 
  * Initial release

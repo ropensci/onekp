@@ -16,6 +16,8 @@ download_nucleotides(x, dir = file.path(tempdir(), "nucleotides"),
 \item{x}{OneKP object}
 
 \item{dir}{Directory in which to store the downloaded data}
+
+\item{absolute}{If TRUE, return absolute paths (default=FALSE)}
 }
 \value{
 character vector of paths to the files that were downloaded

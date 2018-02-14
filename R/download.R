@@ -8,6 +8,7 @@
 #'
 #' @param x OneKP object
 #' @param dir Directory in which to store the downloaded data
+#' @param absolute If TRUE, return absolute paths (default=FALSE)
 #' @return character vector of paths to the files that were downloaded
 #' @name download
 #' @examples
@@ -30,10 +31,12 @@ NULL
 #' @param unwrap A function to extract the data from the raw download
 #' @param uncache A function to retrieve an item cache
 #' @param dir The directory to which final data should be written
-#' @param absolute If TRUE, return absolute paths (default=FALSE)
-#' @return character vector of filenames
+#' @return character vector of downloaded filenames
 #' @noRd
 .download <- function(x, field, unwrap, uncache, dir, absolute=FALSE){
+  if(nrow(x@table) == 0){
+    return(character(0))
+  }
   links <- x@links[x@links$file %in% x@table[[field]], ]
   paths <- apply(links, 1, function(link){
     file <- link[1]

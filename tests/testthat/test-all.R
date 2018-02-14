@@ -78,4 +78,16 @@ test_that("Can download nucleotide sequence", {
   expect_true(all(file.exists(nucs)))
 })
 
+test_that("Nothing gets you nothing", {
+  expect_equal(nrow(filter_by_species(kp, 'foobar')@table), 0)
+  expect_true(identical(
+    download_peptides(filter_by_species(kp, 'foobar')),
+    character(0)
+  ))
+  expect_true(identical(
+    download_nucleotides(filter_by_species(kp, 'foobar')),
+    character(0)
+  ))
+})
+
 unlink('onekp_test', recursive = TRUE)
