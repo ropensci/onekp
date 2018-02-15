@@ -14,6 +14,12 @@
 
  * Removed unused imports `readr` and `tidyr`
 
+ * Split test functions into smaller test files
+
+ * Add `skip_on_cran` and `skip_on_travis` to `retrieve_onekp` test
+
+ * Save metadata as package data: `data(onekp)` 
+
 ## Updates based on Zachary Foster's review
 
  * Add space between equal signs in argument lists

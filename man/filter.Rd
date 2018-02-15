@@ -29,9 +29,7 @@ OneKP object
 Filter a OneKP object
 }
 \examples{
-\dontrun{
-onekp <- retrieve_onekp()
-onekp
+data(onekp)
 
 # filter by 1KP ID
 filter_by_code(onekp, c('URDJ', 'ROAP'))
@@ -47,5 +45,4 @@ filter_by_clade(onekp, 'Brassicaceae')
 
 # filter by clade NCBI taxon ID
 filter_by_clade(onekp, 3700)
-}
 }

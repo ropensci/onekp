@@ -6,6 +6,9 @@
 #' \code{@table}, the main metadata table and 2) \code{@links} a map from
 #' resource to URL (mostly for internal use). 
 #'
+#' This dataset is also saved as package data, you can access this with
+#' \code{data(onekp)}.
+#'
 #' The metadata table contains the following columns:
 #'
 #' \itemize{

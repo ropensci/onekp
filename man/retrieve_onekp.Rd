@@ -27,6 +27,9 @@ a \code{OneKp} S4 object. This object contains two data.frames: 1)
 resource to URL (mostly for internal use).
 }
 \details{
+This dataset is also saved as package data, you can access this with
+\code{data(onekp)}.
+
 The metadata table contains the following columns:
 
 \itemize{

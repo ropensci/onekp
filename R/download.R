@@ -13,7 +13,7 @@
 #' @name download
 #' @examples
 #' \dontrun{
-#' onekp <- retrieve_onekp()
+#' data(onekp)
 #' 
 #' # Filter by 1KP code (from `onekp@table$code` column)
 #' seqs <- filter_by_code(onekp, c('URDJ', 'ROAP'))
