@@ -16,7 +16,7 @@ Imports:
     xml2,
     methods,
     rlang,
-    taxizedb
+    taxizedb (>= 0.1.6)
 Remotes:
     ropensci/taxizedb
 License: MIT + file LICENSE

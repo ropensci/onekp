@@ -20,6 +20,8 @@
 
  * Save metadata as package data: `data(onekp)` 
 
+ * Add minimum version to `taxizedb`
+
 ## Updates based on Zachary Foster's review
 
  * Add space between equal signs in argument lists
