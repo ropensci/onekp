@@ -1,6 +1,5 @@
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/onekp.svg?branch=master)](https://travis-ci.org/ropensci/onekp)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/onekp/master.svg)](https://codecov.io/github/ropensci/onekp?branch=master)
-[![ropensci_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
 
 # onekp
 
@@ -152,6 +151,10 @@ young sporoph').
 Making sense of all this would require either actually reading the tissue
 annotations or performing fancy computational linguistics.
 
+# Funding
+
+This material is based upon work supported by the National Science Foundation under Grant No. IOS 1546858
+
 # Contributing
 
 We welcome any contributions!
@@ -159,7 +162,4 @@ We welcome any contributions!
  * By participating in this project you agree to abide by the terms outlined in
    the [Contributor Code of Conduct](CONDUCT.md).
 
-
-# Funding
-
-This material is based upon work supported by the National Science Foundation under Grant No. IOS 1546858
+[![ropensci_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
