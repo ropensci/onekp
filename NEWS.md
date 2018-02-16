@@ -1,4 +1,16 @@
-# onekp 0.X.X
+# onekp 0.2.1
+
+ First rOpenSci version
+
+ * Transfer ownership to rOpenSci
+
+ * Update README
+ 
+ * Add .github files
+
+ * Add reviewers to DESCRIPTION
+
+# onekp 0.2.0
 
  The goal of this version is to address all issues raised by the rOpenSci
  editor (Scott Chamberlain) and my two reviewers: Jessica Minnier and Zachary
