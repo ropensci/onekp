@@ -102,7 +102,7 @@ download_nucleotides(seqs, 'oneKP/nuc')
 
 # Funding
 
-This material is based upon work supported by the National Science Foundation under Grant No. IOS 1546858
+Development of this R package was supported by the National Science Foundation under Grant No. IOS 1546858.
 
 # Contributing
 
