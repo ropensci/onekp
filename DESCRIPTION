@@ -20,8 +20,8 @@ Imports:
 Remotes:
     ropensci/taxizedb
 License: MIT + file LICENSE
-URL: https://github.com/arendsee/onekp
-BugReports: https://github.com/arendsee/onekp/issues
+URL: https://github.com/ropensci/onekp
+BugReports: https://github.com/ropensci/onekp/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1

@@ -1,6 +1,6 @@
-[![Travis-CI Build Status](https://travis-ci.org/arendsee/onekp.svg?branch=master)](https://travis-ci.org/arendsee/onekp)
-[![Coverage Status](https://img.shields.io/codecov/c/github/arendsee/onekp/master.svg)](https://codecov.io/github/arendsee/onekp?branch=master)
-[![](https://badges.ropensci.org/178_status.svg)](https://github.com/ropensci/onboarding/issues/178)
+[![Travis-CI Build Status](https://travis-ci.org/ropensci/onekp.svg?branch=master)](https://travis-ci.org/ropensci/onekp)
+[![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/onekp/master.svg)](https://codecov.io/github/ropensci/onekp?branch=master)
+[![ropensci_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
 
 # onekp
 
@@ -31,7 +31,7 @@ filtering solutions.
 
 ```r
 library(devtools)
-install_github('arendsee/onekp')
+install_github('ropensci/onekp')
 ```
 
 

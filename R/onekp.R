@@ -36,7 +36,7 @@ NULL
 #'
 #' @section Bug Reports:
 #'
-#' Any bugs or issues can be reported at <https://github.com/arendsee/onekp/issues>
+#' Any bugs or issues can be reported at <https://github.com/ropensci/onekp/issues>
 #'
 #' @docType package
 #' @name onekp
