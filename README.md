@@ -1,3 +1,4 @@
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/onekp.svg?branch=master)](https://travis-ci.org/ropensci/onekp)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ropensci/onekp/master.svg)](https://codecov.io/github/ropensci/onekp?branch=master)
 

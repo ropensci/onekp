@@ -3,7 +3,6 @@
 \docType{data}
 \name{onekp}
 \alias{onekp}
-\alias{onekp}
 \alias{onekp-package}
 \title{OneKP metadata file}
 \format{OneKP object}
