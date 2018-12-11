@@ -26,14 +26,33 @@ scraping it from project website. However, the `onekp` R package is generally
 easier to use (no iRODS dependency or CyVerse API) and offers powerful
 filtering solutions. 
 
+## Contact info
+
+1KP staff
+
+ * [Gane Ka-Shu Wong](https://sites.google.com/a/ualberta.ca/professor-gane-ka-shu-wong/) - Principal investigator
+
+ * [Michael Deyholos](mkdeyholos@gmail.com) - Alberta co-investigator
+
+ * [Yong Zhang](zhangy@genomics.org.cn) - Shenzhen co-investigator
+
+ * [Eric Carpenter](ejc@ualberta.ca) - Database manager
+
+R package maintainer
+
+ * [Zebulun Arendsee](arendsee@iastate.edu)
+
+
 ## Installation
+
+`onekp` is on CRAN, but currently is a little out of date. So for now it is
+better to install through github. 
 
 
 ```r
 library(devtools)
 install_github('ropensci/onekp')
 ```
-
 
 ## Examples
 
@@ -86,75 +105,9 @@ download_peptides(seqs, 'oneKP/pep')
 download_nucleotides(seqs, 'oneKP/nuc')
 ```
 
-
-## Caveats
-
-The dataset is a little dirty.
-
-I attempt to map species to NCBI taxonomy IDs, but this fails for 95 out of
-1171 taxa. Many of the species are either ambiguous or pool data across species
-(e.g. *Hemerocallis sp.*). Worse, some are mis-named: "Kalanchoe
-crenato-diagremontiana", which presumably refers to *Kalanchoe crenato* and the
-sister species *Kalanchoe daigremontiana* (which they misspelled). Others are
-just weird:
-
- * *Ettlia(?) oleoabundans*
- * *coccoid-prasinophyt*
- * *Ribes aff. giraldii* - *Rives giraldii* is a species, but what is *aff.*?
-
-Others use names that are not from the NCBI taxonomy, e.g.
-
- * *Tribulus eichlerianus*
- * *Chlorochytridion tuberculata*
- * *Oenothera suffulta suffulta* - *Oenothera suffulta* is in NCBI common tree
-
-Another issue is inconsistency in tissue naming.
-
-The tissue column is of great biological importance and but is unfortunately
-not very well standardized. For example, the following tissue types are included:
-
- 1. young leaf AND shoot
-    - 'young leaves and shoot'
-    - 'young leaves and shoots'
- 2. leaf
-    - 'leaf'
-    - 'Leaf'
-    - 'leaves'
- 3. leaf AND flower
-    - 'leaf and flower'
-    - 'leaves and flowers'
- 4. flower AND stem AND leaf
-
-
-```r
-library(onekp)
-onekp <- retrieve_onekp()
-onekp@table %>%
-    subset(grepl('lea[vf]', tissue, ignore.case=TRUE, perl=TRUE)) %>%
-    subset(grepl('stem', tissue, ignore.case=TRUE)) %>%
-    subset(grepl('flower', tissue, ignore.case=TRUE)) %>%
-    subset(!grepl('bud|fruit|young|apex|devel', tissue, ignore.case=TRUE, perl=TRUE)) %$%
-    tissue %>% unique %>% sort
-```
-
-```
-##  [1] "flower, stem, leaves"   "flowers, leaves, stem" 
-##  [3] "flowers, leaves, stems" "flowers, stem, leaves" 
-##  [5] "flowers, stems, leaves" "leaf, stem, flower"    
-##  [7] "leaf, stem, flowers"    "leaves, stem, flower"  
-##  [9] "leaves, stem, flowers"  "leaves,stem, flowers"
-```
-
-Additionally, many of the entries are entirely missing a tissue annotation or
-the annotation appears to be truncated (e.g. 'the little turrets (so mix of
-young sporoph').
-
-Making sense of all this would require either actually reading the tissue
-annotations or performing fancy computational linguistics.
-
 # Funding
 
-This material is based upon work supported by the National Science Foundation under Grant No. IOS 1546858
+Development of this R package was supported by the National Science Foundation under Grant No. IOS 1546858.
 
 # Contributing
 

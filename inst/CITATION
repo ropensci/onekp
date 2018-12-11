@@ -1,0 +1,53 @@
+citHeader("To cite onekp in publications use:")
+
+citEntry(
+  entry = "Article",
+  title="Phylotranscriptomic analysis of the origin and early diversification of land plants",
+  author="Wickett, Norman J and Mirarab, Siavash and Nguyen, Nam and Warnow, Tandy and Carpenter, Eric and Matasci, Naim and Ayyampalayam, Saravanaraj and Barker, Michael S and Burleigh, J Gordon and Gitzendanner, Matthew A and others",
+  journal="Proceedings of the National Academy of Sciences",
+  volume="111",
+  number="45",
+  pages="E4859--E4868",
+  year="2014",
+  publisher="National Acad Sciences",
+  textVersion="Norman J Wickett, ... Gane KS Wong, Jim Leebens-Mack. Nov 2014. Phylotranscriptomic analysis of the origin and early diversification of land plants. Proc. Natl. Acad. Sci. USA 111: E4859-E4868. PMID: 25355905"
+)
+
+citEntry(
+  entry = "Article",
+  title="Data access for the 1,000 Plants (1KP) project",
+  author="Matasci, Naim and Hung, Ling-Hong and Yan, Zhixiang and Carpenter, Eric J and Wickett, Norman J and Mirarab, Siavash and Nguyen, Nam and Warnow, Tandy and Ayyampalayam, Saravanaraj and Barker, Michael and others",
+  journal="Gigascience",
+  volume="3",
+  number="1",
+  pages="17",
+  year="2014",
+  publisher="BioMed Central",
+  textVersion="Naim Matasci, ... Jim Leebens-Mack, Gane KS Wong. Oct 2014. Data access for the 1,000 Plants (1KP) project. GigaScience 3: 17. PMID: 25625010"
+)
+
+citEntry(
+  entry = "Article",
+  title="SOAPdenovo-Trans: de novo transcriptome assembly with short RNA-Seq reads",
+  author="Xie, Yinlong and Wu, Gengxiong and Tang, Jingbo and Luo, Ruibang and Patterson, Jordan and Liu, Shanlin and Huang, Weihua and He, Guangzhu and Gu, Shengchang and Li, Shengkang and others",
+  journal="Bioinformatics",
+  volume="30",
+  number="12",
+  pages="1660--1666",
+  year="2014",
+  publisher="Oxford University Press",
+  textVersion="Yinlong Xie, ... Gane KS Wong, Jun Wang. Jun 2014. SOAPdenovo-Trans: de novo transcriptome assembly with short RNA-Seq reads. Bioinformatics 30: 1660-1666. PMID: 24532719"
+)
+
+citEntry(
+  entry = "Article",
+  title="Evaluating methods for isolating total RNA and predicting the success of sequencing phylogenetically diverse plant transcriptomes",
+  author="Johnson, Marc TJ and Carpenter, Eric J and Tian, Zhijian and Bruskiewich, Richard and Burris, Jason N and Carrigan, Charlotte T and Chase, Mark W and Clarke, Neil D and Covshoff, Sarah and Edger, Patrick P and others",
+  journal="PloS one",
+  volume="7",
+  number="11",
+  pages="e50226",
+  year="2012",
+  publisher="Public Library of Science",
+  textVersion="Marc TJ Johnson, ... Gane KS Wong. Nov 2012. Evaluating methods for isolating total RNA and predicting the success of sequencing phylogenetically diverse plant transcriptomes. PLoS One 7: e50226. PMID: 23185583"
+)
