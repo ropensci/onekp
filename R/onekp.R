@@ -1,6 +1,6 @@
 #' @importFrom rlang .data
 #' @importFrom methods new
-#' @importFrom utils head untar
+#' @importFrom utils head untar download.file
 utils::globalVariables(c("%>%", "."))
 NULL
 

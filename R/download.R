@@ -49,7 +49,7 @@ NULL
       path <- file.path(dir, file)
       if(!dir.exists(dir))
         dir.create(dir, recursive = TRUE)
-      curl::curl_download(url = url, destfile = path, quiet = TRUE)
+      download.file(url = url, destfile = path)
       unwrap(path)
     }
   })

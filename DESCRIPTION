@@ -5,7 +5,8 @@ Authors@R: c(
     person("Zebulun", "Arendsee", role = c("aut", "cre"),
         email = "zbwrnz@gmail.com"),
     person("Zachary", "Foster", role = "rev"),
-    person("Jessica", "Minnier", role = "rev")
+    person("Jessica", "Minnier", role = "rev"),
+    person("Joel", "Nita", role = "ctb")
   )
 Description:
     The 1000 Plants Initiative (www.onekp.com) has sequenced the transcriptomes
@@ -15,7 +16,6 @@ Description:
 Depends: R (>= 3.4.0)
 Imports:
     rvest,
-    curl,
     magrittr,
     dplyr,
     xml2,
