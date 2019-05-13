@@ -1,6 +1,6 @@
 Package: onekp
 Title: Retrieve Data from the 1000 Plants Initiative (1KP)
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: c(
     person("Zebulun", "Arendsee", role = c("aut", "cre"),
         email = "zbwrnz@gmail.com"),
