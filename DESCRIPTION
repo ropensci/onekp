@@ -6,7 +6,7 @@ Authors@R: c(
         email = "zbwrnz@gmail.com"),
     person("Zachary", "Foster", role = "rev"),
     person("Jessica", "Minnier", role = "rev"),
-    person("Joel", "Nita", role = "ctb")
+    person("Joel", "Nitta", role = "ctb")
   )
 Description:
     The 1000 Plants Initiative (www.onekp.com) has sequenced the transcriptomes
