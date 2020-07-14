@@ -47,10 +47,20 @@ NULL
       cache
     } else {
       path <- file.path(dir, file)
+      cookie <- file.path(dir, "cookie")
       if(!dir.exists(dir))
         dir.create(dir, recursive = TRUE)
-      cmd = unname(paste0("curl", " -L ", "'", url, "'", " -o ", path))
-      system(cmd)
+      fileid <- sub(".*id=", "", url)
+      cmd1 <- paste0("curl -c ", cookie, " -s -L '", url, "'")
+      cat(cmd1, file=stderr())
+      system(cmd1)
+      url2 <- paste0(
+        "\"https://drive.google.com/uc?export=download&confirm=",
+        "`awk '/download/ {print $NF}' ", cookie, "`",
+        "&id=", fileid, '"')
+      cmd2 <- paste("curl", "-Lb", cookie, url2, "-o", path)
+      cat(cmd2, file=stderr())
+      system(cmd2)
       unwrap(path)
     }
   })
