@@ -49,7 +49,8 @@ NULL
       path <- file.path(dir, file)
       if(!dir.exists(dir))
         dir.create(dir, recursive = TRUE)
-      download.file(url = url, destfile = path)
+      cmd = unname(paste0("curl", " -L ", "'", url, "'", " -o ", path))
+      system(cmd)
       unwrap(path)
     }
   })

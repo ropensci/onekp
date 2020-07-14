@@ -6,11 +6,13 @@
 \alias{download_nucleotides}
 \title{Download a dataset}
 \usage{
-download_peptides(x, dir = file.path(tempdir(), "peptides"),
-  absolute = FALSE)
+download_peptides(x, dir = file.path(tempdir(), "peptides"), absolute = FALSE)
 
-download_nucleotides(x, dir = file.path(tempdir(), "nucleotides"),
-  absolute = FALSE)
+download_nucleotides(
+  x,
+  dir = file.path(tempdir(), "nucleotides"),
+  absolute = FALSE
+)
 }
 \arguments{
 \item{x}{OneKP object}
